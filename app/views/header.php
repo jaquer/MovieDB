@@ -13,3 +13,5 @@
 	
 </head>
 <body>
+	<?= heading('MovieDB', 1); ?>
+	<hr>
