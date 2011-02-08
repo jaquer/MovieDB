@@ -9,8 +9,7 @@ class Init extends CI_Controller {
 
 	function index()
 	{
-		$this->load->view('header');
-		$this->load->view('footer');
+		redirect('/user/');
 	}
 }
 

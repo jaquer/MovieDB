@@ -11,3 +11,9 @@ h1 {
 hr {
 	border-style: solid;
 }
+
+#loginform {
+	margin: 0 auto;
+	width: 10em;
+	text-align: center;
+}
