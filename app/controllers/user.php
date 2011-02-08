@@ -25,8 +25,8 @@ class User extends CI_Controller {
 	function login()
 	{
 	
-		$user_id = $this->input->post('user_id');
-		echo 'logged in as user_id: ' .$user_id;
+		$this->session->set_userdata('user_id', $this->input->post('user_id'));
+		echo 'logged in as user_id: ' . $this->session->userdata('user_id');
 		
 	}
 }
