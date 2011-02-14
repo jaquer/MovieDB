@@ -9,7 +9,7 @@
 
 	<?= link_tag('images/favicon.png', 'icon', 'image/png'); ?>
 
-	<script type="text/javascript" src="<?= base_url() ?>js/init.js"></script>
+	<script type="text/javascript" src="<?= base_url(); ?>js/init.js"></script>
 
 </head>
 <body>
