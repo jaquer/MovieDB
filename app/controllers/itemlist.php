@@ -14,6 +14,12 @@ class ItemList extends CI_Controller {
 
 	function index()
 	{
+		/* TODO: redirection logic */
+		redirect('/itemlist/unrated/');
+	}
+
+	function unrated()
+	{
 
 		$user_id = $this->session->userdata('user_id');
 
