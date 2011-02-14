@@ -17,3 +17,13 @@ hr {
 	width: 10em;
 	text-align: center;
 }
+
+table {
+	table-layout: fixed;
+	border-collapse: collapse;
+	border: 1px black solid;
+}
+
+th {
+	border: 1px black solid;
+}
