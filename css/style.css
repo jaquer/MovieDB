@@ -27,3 +27,7 @@ table {
 th {
 	border: 1px black solid;
 }
+
+tbody tr:hover {
+	background-color: #ff8080;
+}
