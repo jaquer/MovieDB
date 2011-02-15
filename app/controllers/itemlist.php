@@ -23,26 +23,13 @@ class ItemList extends CI_Controller {
 
 		$user_id = $this->session->userdata('user_id');
 
-		/* TODO: move to model */
-		$sql = "
-		SELECT
-			movie.*,
-			rating.rating_value
-		FROM
-			movie
-		LEFT JOIN
-			rating
-		ON
-			movie.movie_id = rating.movie_id
-		AND
-			rating.user_id = ?
-		WHERE
-			rating_value IS NULL
-		ORDER BY
-			movie_name
-		";
+		$this->db->select('movie.*, rating.rating_value');
+		$this->db->from('movie');
+		$this->db->join('rating', 'movie.movie_id = rating.movie_id AND rating.user_id = ' . $this->db->escape($user_id), 'left');
+		$this->db->where('rating_value IS NULL');
+		$this->db->order_by('movie_name');
 
-		$query = $this->db->query($sql, array($user_id));
+		$query = $this->db->get();
 
 		$this->load->library('table');
 		$this->table->set_heading('ID', 'Name', 'URL', 'Deleted', 'Added', 'Rating');
