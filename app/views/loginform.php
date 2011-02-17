@@ -11,6 +11,6 @@
 <?php
 	$images = array('ni_on', 'ni_off', 'star_on', 'star_off', 'delete');
 	foreach($images as $image):
-		echo img(array('src' => $image . ".png", 'style' => "display: none;"));
+		echo img(array('src' => "images/" . $image . ".png", 'style' => "display: none;"));
 	endforeach
 ?>
