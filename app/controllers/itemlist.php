@@ -32,6 +32,7 @@ class ItemList extends CI_Controller {
 		$query = $this->db->get();
 
 		$this->load->library('table');
+		$this->table->set_template(array('table_open' => '<table id="item-table">'));
 		$this->table->set_heading('ID', 'Name', 'URL', 'Deleted', 'Added', 'Rating');
 		$data['table'] = $this->table->generate($query);
 

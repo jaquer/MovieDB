@@ -11,6 +11,12 @@
 
 	<script type="text/javascript" src="<?= base_url(); ?>js/init.js"></script>
 
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+
+	<script type="text/javascript" src="<?= base_url(); ?>js/jquery.fixheadertable.min.js"></script>
+	<?= link_tag('css/base.css'); ?>
+	<?= link_tag('http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css'); ?>
+
 </head>
 <body>
 	<?= heading('MovieDB', 1); ?>
