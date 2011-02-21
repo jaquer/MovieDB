@@ -34,8 +34,21 @@ class MovieList extends CI_Controller {
 
 		$this->load->library('table');
 		$this->table->set_template(array('table_open' => '<table id="movies-table">'));
-		$this->table->set_heading('ID', 'Name', 'URL', 'Deleted', 'Added', 'Rating');
-		$data['table'] = $this->table->generate($query);
+		$this->table->set_heading('Rating', 'Movie');
+
+		if ($query->num_rows() > 0)
+		{
+			foreach ($query->result() as $row)
+			{
+				$this->table->add_row($row->rating_value, '<a href="' . $row->movie_url . '" target="imdb">' . $row->movie_name . '</a>');
+			}
+		}
+		else
+		{
+			$this->table->set_heading('You have no more movies to rate. Hooray!');
+		}
+
+		$data['table'] = $this->table->generate();
 
 		$data['caption'] = 'Unrated Movies';
 
@@ -65,8 +78,21 @@ class MovieList extends CI_Controller {
 
 		$this->load->library('table');
 		$this->table->set_template(array('table_open' => '<table id="movies-table">'));
-		$this->table->set_heading('ID', 'Name', 'URL', 'Deleted', 'Added', 'Count', 'Average');
-		$data['table'] = $this->table->generate($query);
+		$this->table->set_heading('Average', 'Name');
+
+		if ($query->num_rows() > 0)
+		{
+			foreach ($query->result() as $row)
+			{
+				$this->table->add_row($row->rating_average, '<a href="' . $row->movie_url . '" target="imdb">' . $row->movie_name . '</a>');
+			}
+		}
+		else
+		{
+			$this->table->set_heading('There are no candidates for deletion. You only have good movies, man.');
+		}
+
+		$data['table'] = $this->table->generate();
 
 		$data['caption'] = 'Movies to Delete';
 
@@ -93,8 +119,21 @@ class MovieList extends CI_Controller {
 
 		$this->load->library('table');
 		$this->table->set_template(array('table_open' => '<table id="movies-table">'));
-		$this->table->set_heading('ID', 'Name', 'URL', 'Deleted', 'Added', 'Count', 'Rating');
-		$data['table'] = $this->table->generate($query);
+		$this->table->set_heading('Rating', 'Name');
+
+		if ($query->num_rows() > 0)
+		{
+			foreach ($query->result() as $row)
+			{
+				$this->table->add_row($row->rating_value, '<a href="' . $row->movie_url . '" target="imdb">' . $row->movie_name . '</a>');
+			}
+		}
+		else
+		{
+			$this->table->set_heading('There are no movies missing only your rating. Good job!');
+		}
+
+		$data['table'] = $this->table->generate();
 
 		$data['caption'] = 'Movies Missing Your Rating';
 
