@@ -26,7 +26,11 @@ class User extends CI_Controller {
 	{
 
 		$this->session->set_userdata('user_id', $this->input->post('user_id'));
-		redirect('/itemlist/');
+
+		if ($this->session->userdata('redirect'))
+			redirect($this->session->userdata('redirect'));
+		else
+			redirect('/itemlist/');
 
 	}
 }

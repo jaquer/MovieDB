@@ -7,6 +7,7 @@ class ItemList extends CI_Controller {
 		parent::__construct();
 		if (! $this->session->userdata('user_id'))
 		{
+			$this->session->set_userdata('redirect', current_url());
 			redirect('/user/');
 		}
 
