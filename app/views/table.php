@@ -2,6 +2,7 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	var options = {
+		width: 780,
 		caption: '<?= $caption; ?>',
 		showhide: false,
 		pager: true,
