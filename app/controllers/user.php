@@ -30,7 +30,7 @@ class User extends CI_Controller {
 		if ($this->session->userdata('redirect'))
 			redirect($this->session->userdata('redirect'));
 		else
-			redirect('/itemlist/');
+			redirect('/movielist/');
 
 	}
 }

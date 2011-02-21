@@ -2,12 +2,12 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	var options = {
-		caption: 'Unrated items',
+		caption: 'Unrated movies',
 		showhide: false,
 		pager: true,
 		rowsPerPage: 25,
 		wrapper: false
 	}
-	$('#item-table').fixheadertable(options);
+	$('#movies-table').fixheadertable(options);
  });
  </script>

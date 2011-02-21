@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class ItemList extends CI_Controller {
+class MovieList extends CI_Controller {
 
 	function __construct()
 	{
@@ -16,7 +16,7 @@ class ItemList extends CI_Controller {
 	function index()
 	{
 		/* TODO: redirection logic */
-		redirect('/itemlist/unrated/');
+		redirect('/movielist/unrated/');
 	}
 
 	function unrated()
@@ -33,7 +33,7 @@ class ItemList extends CI_Controller {
 		$query = $this->db->get();
 
 		$this->load->library('table');
-		$this->table->set_template(array('table_open' => '<table id="item-table">'));
+		$this->table->set_template(array('table_open' => '<table id="movies-table">'));
 		$this->table->set_heading('ID', 'Name', 'URL', 'Deleted', 'Added', 'Rating');
 		$data['table'] = $this->table->generate($query);
 
@@ -62,7 +62,7 @@ class ItemList extends CI_Controller {
 		$query = $this->db->get();
 
 		$this->load->library('table');
-		$this->table->set_template(array('table_open' => '<table id="item-table">'));
+		$this->table->set_template(array('table_open' => '<table id="movies-table">'));
 		$this->table->set_heading('ID', 'Name', 'URL', 'Deleted', 'Added', 'Count', 'Average');
 		$data['table'] = $this->table->generate($query);
 
@@ -88,7 +88,7 @@ class ItemList extends CI_Controller {
 		$query = $this->db->get();
 
 		$this->load->library('table');
-		$this->table->set_template(array('table_open' => '<table id="item-table">'));
+		$this->table->set_template(array('table_open' => '<table id="movies-table">'));
 		$this->table->set_heading('ID', 'Name', 'URL', 'Deleted', 'Added', 'Count', 'Rating');
 		$data['table'] = $this->table->generate($query);
 
@@ -100,4 +100,4 @@ class ItemList extends CI_Controller {
 
 }
 
-/* EOF controllers/itemlist.php */
+/* EOF controllers/movielist.php */
