@@ -2,7 +2,7 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	var options = {
-		caption: 'Unrated movies',
+		caption: '<?= $caption; ?>',
 		showhide: false,
 		pager: true,
 		rowsPerPage: 25,

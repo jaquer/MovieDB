@@ -37,6 +37,8 @@ class MovieList extends CI_Controller {
 		$this->table->set_heading('ID', 'Name', 'URL', 'Deleted', 'Added', 'Rating');
 		$data['table'] = $this->table->generate($query);
 
+		$data['caption'] = 'Unrated Movies';
+
 		$this->load->view('header');
 		$this->load->view('table', $data);
 		$this->load->view('footer');
@@ -66,6 +68,8 @@ class MovieList extends CI_Controller {
 		$this->table->set_heading('ID', 'Name', 'URL', 'Deleted', 'Added', 'Count', 'Average');
 		$data['table'] = $this->table->generate($query);
 
+		$data['caption'] = 'Movies to Delete';
+
 		$this->load->view('header');
 		$this->load->view('table', $data);
 		$this->load->view('footer');
@@ -91,6 +95,8 @@ class MovieList extends CI_Controller {
 		$this->table->set_template(array('table_open' => '<table id="movies-table">'));
 		$this->table->set_heading('ID', 'Name', 'URL', 'Deleted', 'Added', 'Count', 'Rating');
 		$data['table'] = $this->table->generate($query);
+
+		$data['caption'] = 'Movies Missing Your Rating';
 
 		$this->load->view('header');
 		$this->load->view('table', $data);
