@@ -190,11 +190,30 @@ class MovieList extends CI_Controller {
 
 		foreach ($values as $value => $desc)
 		{
-			$ret .= '<input class="star" type="radio" name="movie_id-' . $id . '" title="' . $desc . '" value="' . $value . '"';
+			$ret .= '<input type="radio" name="movie_id-' . $id . '" title="' . $desc . '" value="' . $value . '"';
 			if ($value == $rating)
 				$ret .= ' checked="checked"';
 			$ret .= '>';
 		}
+
+		$ret .= '&nbsp;<img src="' . base_url() . 'images/ni_';
+		if ($rating == 0)
+			$ret .= 'on';
+		else
+			$ret .= 'off';
+
+		$ret .= '.png" title="' . $values[0] . '" alt="">&nbsp;';
+
+		for ($i = 1; $i <= 5; $i++) {
+			$ret .= '<img src="' . base_url() . 'images/star_';
+			if ($i <= $rating)
+			  $ret .= 'on';
+			else
+			  $ret .= 'off';
+			$ret .= '.png" title="' . $values[$i] . '" alt="">';
+		}
+
+		$ret .= '&nbsp;<img src="' . base_url() . 'images/delete.png" title="' . $values[-1] .'" alt="">';
 
 		return $ret;
 

@@ -31,3 +31,7 @@ th {
 tbody tr:hover {
 	background-color: yellow;
 }
+
+table input {
+  display: none;
+}
