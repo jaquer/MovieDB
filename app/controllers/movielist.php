@@ -142,6 +142,43 @@ class MovieList extends CI_Controller {
 
 	}
 
+	function all()
+	{
+
+		$user_id = $this->session->userdata('user_id');
+
+		$this->db->select('movie.*, rating_value');
+		$this->db->from('movie');
+		$this->db->join('rating', 'movie.id = rating.movie_id AND rating.user_id = ' . $this->db->escape($user_id), 'LEFT');
+		$this->db->order_by('movie_name_sort');
+
+		$query = $this->db->get();
+
+		$this->load->library('table');
+		$this->table->set_template(array('table_open' => '<table id="movies-table">'));
+		$this->table->set_heading('Rating', 'Name');
+
+		if ($query->num_rows() > 0)
+		{
+			foreach ($query->result() as $row)
+			{
+				$this->table->add_row($row->rating_value, '<a href="http://www.imdb.com/title/' . $row->imdb_id . '" target="imdb">' . $row->movie_name . '</a>');
+			}
+		}
+		else
+		{
+			$this->table->set_heading('There are no movies in the database. What a shame.');
+		}
+
+		$data['table'] = $this->table->generate();
+
+		$data['caption'] = 'All Movies';
+		$this->load->view('header');
+		$this->load->view('table', $data);
+		$this->load->view('footer');
+
+	}
+
 }
 
 /* EOF controllers/movielist.php */
