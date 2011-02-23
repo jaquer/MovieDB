@@ -14,7 +14,7 @@ class User extends CI_Controller {
 		$q = $this->db->get('user');
 		foreach ($q->result() as $row)
 		{
-			$data['users'][$row->user_id] = $row->user_name;
+			$data['users'][$row->id] = $row->user_name;
 		}
 
 		$this->load->view('header');

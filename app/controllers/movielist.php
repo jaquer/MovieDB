@@ -24,11 +24,11 @@ class MovieList extends CI_Controller {
 
 		$user_id = $this->session->userdata('user_id');
 
-		$this->db->select('movie.*, rating.rating_value');
+		$this->db->select('movie.*, rating_value');
 		$this->db->from('movie');
-		$this->db->join('rating', 'movie.movie_id = rating.movie_id AND rating.user_id = ' . $this->db->escape($user_id), 'left');
+		$this->db->join('rating', 'movie.id = rating.movie_id AND rating.user_id = ' . $this->db->escape($user_id), 'LEFT');
 		$this->db->where('rating_value IS NULL');
-		$this->db->order_by('movie_name');
+		$this->db->order_by('movie_name_sort');
 
 		$query = $this->db->get();
 
@@ -40,7 +40,7 @@ class MovieList extends CI_Controller {
 		{
 			foreach ($query->result() as $row)
 			{
-				$this->table->add_row($row->rating_value, '<a href="' . $row->movie_url . '" target="imdb">' . $row->movie_name . '</a>');
+				$this->table->add_row($row->rating_value, '<a href="http://www.imdb.com/title/' . $row->imdb_id . '" target="imdb">' . $row->movie_name . '</a>');
 			}
 		}
 		else
@@ -63,16 +63,16 @@ class MovieList extends CI_Controller {
 
 		$user_count = $this->db->count_all('user');
 
-		$this->db->select('movie.*, (SELECT COUNT(*) FROM rating WHERE rating.movie_id = movie.movie_id) AS rating_count, ROUND(AVG(rating_value), 1) AS rating_average', FALSE);
+		$this->db->select('movie.*, (SELECT COUNT(*) FROM rating WHERE rating.movie_id = movie.id) AS rating_count, ROUND(AVG(rating_value), 1) AS rating_average', FALSE);
 		$this->db->from('movie');
-		$this->db->join('rating', 'movie.movie_id = rating.movie_id', 'left');
+		$this->db->join('rating', 'movie.id = rating.movie_id', 'LEFT');
 		$this->db->where('rating_value >', 0);
-		$this->db->where('movie_status IS NULL');
-		$this->db->group_by('movie_id');
+		$this->db->where('movie_status', 'ACTIVE');
+		$this->db->group_by('movie.id');
 		$this->db->having('rating_count', $user_count);
 		$this->db->having('rating_average <', 3);
 		$this->db->order_by('rating_average');
-		$this->db->order_by('movie_name');
+		$this->db->order_by('movie_name_sort');
 
 		$query = $this->db->get();
 
@@ -84,7 +84,7 @@ class MovieList extends CI_Controller {
 		{
 			foreach ($query->result() as $row)
 			{
-				$this->table->add_row($row->rating_average, '<a href="' . $row->movie_url . '" target="imdb">' . $row->movie_name . '</a>');
+				$this->table->add_row($row->rating_average, '<a href="http://www.imdb.com/title/' . $row->imdb_id . '" target="imdb">' . $row->movie_name . '</a>');
 			}
 		}
 		else
@@ -95,7 +95,6 @@ class MovieList extends CI_Controller {
 		$data['table'] = $this->table->generate();
 
 		$data['caption'] = 'Movies to Delete';
-
 		$this->load->view('header');
 		$this->load->view('table', $data);
 		$this->load->view('footer');
@@ -108,12 +107,12 @@ class MovieList extends CI_Controller {
 		$user_id = $this->session->userdata('user_id');
 		$user_count = $this->db->count_all('user');
 
-		$this->db->select('movie.*, COUNT(rating.rating_value) AS rating_count, NULL as rating_value', FALSE);
+		$this->db->select('movie.*, COUNT(rating_value) AS rating_count, NULL as rating_value', FALSE);
 		$this->db->from('movie');
-		$this->db->join('rating', 'movie.movie_id = rating.movie_id AND (' . $this->db->escape($user_id) . ' NOT IN (SELECT r.user_id FROM rating AS r WHERE r.movie_id = rating.movie_id))', 'inner');
-		$this->db->group_by('movie_id');
+		$this->db->join('rating', 'movie.id = rating.movie_id AND (' . $this->db->escape($user_id) . ' NOT IN (SELECT r.user_id FROM rating AS r WHERE r.movie_id = rating.movie_id))', 'INNER');
+		$this->db->group_by('movie.id');
 		$this->db->having('rating_count', $user_count - 1);
-		$this->db->order_by('movie_name');
+		$this->db->order_by('movie_name_sort');
 
 		$query = $this->db->get();
 
@@ -125,7 +124,7 @@ class MovieList extends CI_Controller {
 		{
 			foreach ($query->result() as $row)
 			{
-				$this->table->add_row($row->rating_value, '<a href="' . $row->movie_url . '" target="imdb">' . $row->movie_name . '</a>');
+				$this->table->add_row($row->rating_value, '<a href="http://www.imdb.com/title/' . $row->imdb_id . '" target="imdb">' . $row->movie_name . '</a>');
 			}
 		}
 		else
