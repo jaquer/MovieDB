@@ -40,7 +40,7 @@ class MovieList extends CI_Controller {
 		{
 			foreach ($query->result() as $row)
 			{
-				$this->table->add_row($row->rating_value, '<a href="http://www.imdb.com/title/' . $row->imdb_id . '" target="imdb">' . $row->movie_name . '</a>');
+				$this->table->add_row($this->_radioboxen($row->id, $row->rating_value), '<a href="http://www.imdb.com/title/' . $row->imdb_id . '" target="imdb">' . $row->movie_name . '</a>');
 			}
 		}
 		else
@@ -124,7 +124,7 @@ class MovieList extends CI_Controller {
 		{
 			foreach ($query->result() as $row)
 			{
-				$this->table->add_row($row->rating_value, '<a href="http://www.imdb.com/title/' . $row->imdb_id . '" target="imdb">' . $row->movie_name . '</a>');
+				$this->table->add_row($this->_radioboxen($row->id, $row->rating_value), '<a href="http://www.imdb.com/title/' . $row->imdb_id . '" target="imdb">' . $row->movie_name . '</a>');
 			}
 		}
 		else
@@ -162,7 +162,7 @@ class MovieList extends CI_Controller {
 		{
 			foreach ($query->result() as $row)
 			{
-				$this->table->add_row($row->rating_value, '<a href="http://www.imdb.com/title/' . $row->imdb_id . '" target="imdb">' . $row->movie_name . '</a>');
+				$this->table->add_row($this->_radioboxen($row->id, $row->rating_value), '<a href="http://www.imdb.com/title/' . $row->imdb_id . '" target="imdb">' . $row->movie_name . '</a>');
 			}
 		}
 		else
@@ -176,6 +176,27 @@ class MovieList extends CI_Controller {
 		$this->load->view('header');
 		$this->load->view('table', $data);
 		$this->load->view('footer');
+
+	}
+
+	function _radioboxen($id, $rating)
+	{
+
+		if ($rating === NULL) $rating = -1;
+
+		$values = array(0 => 'Not Interested', 1 => 'Hated It', 2 => 'Didn\'t Like It', 3 => 'Liked It', 4 => 'Really Liked It', 5 => 'Loved It', -1 => 'Remove Rating');
+
+		$ret = '';
+
+		foreach ($values as $value => $desc)
+		{
+			$ret .= '<input class="star" type="radio" name="movie_id-' . $id . '" title="' . $desc . '" value="' . $value . '"';
+			if ($value == $rating)
+				$ret .= ' checked="checked"';
+			$ret .= '>';
+		}
+
+		return $ret;
 
 	}
 
