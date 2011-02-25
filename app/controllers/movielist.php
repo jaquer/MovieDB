@@ -196,7 +196,7 @@ class MovieList extends CI_Controller {
 			$ret .= '>';
 		}
 
-		$ret .= '&nbsp;<img src="' . base_url() . 'images/ni_';
+		$ret .= '&nbsp;<img src="' . base_url() . 'images/not-interested-';
 		if ($rating == 0)
 			$ret .= 'on';
 		else
@@ -205,7 +205,7 @@ class MovieList extends CI_Controller {
 		$ret .= '.png" title="' . $values[0] . '" alt="">&nbsp;';
 
 		for ($i = 1; $i <= 5; $i++) {
-			$ret .= '<img src="' . base_url() . 'images/star_';
+			$ret .= '<img src="' . base_url() . 'images/star-';
 			if ($i <= $rating)
 			  $ret .= 'on';
 			else
@@ -213,7 +213,7 @@ class MovieList extends CI_Controller {
 			$ret .= '.png" title="' . $values[$i] . '" alt="">';
 		}
 
-		$ret .= '&nbsp;<img src="' . base_url() . 'images/delete.png" title="' . $values[-1] .'" alt="">';
+		$ret .= '&nbsp;<img src="' . base_url() . 'images/remove.png" title="' . $values[-1] .'" alt="">';
 
 		return $ret;
 

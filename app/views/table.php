@@ -3,7 +3,7 @@
 $(document).ready(function() {
 	var options = {
 		width: 783,
-		colratio: [130, 650],
+		colratio: [140, 640],
 		caption: '<?= $caption; ?>',
 		showhide: false,
 		pager: true,
