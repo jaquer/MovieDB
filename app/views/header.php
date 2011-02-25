@@ -17,6 +17,9 @@
 	<script type="text/javascript" src="<?= base_url(); ?>js/jquery.fixheadertable.min.js"></script>
 	<?= link_tag('css/jquery.fixheadertable.css'); ?>
 
+	<script type="text/javascript" src="<?= base_url(); ?>js/jquery.loader-min.js"></script>
+	<?= link_tag('css/jquery.loader.css'); ?>
+
 </head>
 <body>
 	<?= heading('MovieDB', 1); ?>
