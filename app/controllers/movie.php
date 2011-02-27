@@ -19,6 +19,65 @@ class Movie extends CI_Controller {
 		redirect('/movielist/');
 	}
 
+	function details()
+	{
+
+		$user_id = $this->session->userdata('user_id');
+		$movie_id = $this->uri->segment(3);
+
+		if (! $movie_id)
+		{
+			redirect('/movielist/');
+		}
+
+		$this->db->select('movie.*, (SELECT COUNT(*) FROM rating WHERE rating.movie_id = movie.id) AS rating_count, ROUND(AVG(rating_value), 1) AS rating_average', FALSE);
+		$this->db->from('movie');
+		$this->db->join('rating', 'movie.id = rating.movie_id', 'LEFT');
+		$this->db->where('movie.id', $movie_id);
+
+		$query = $this->db->get();
+
+		if ($query->num_rows() > 0)
+		{
+			$row = $query->row();
+
+			$data['movie_id'] = $row->id;
+
+			foreach (array('imdb_id', 'movie_name', 'movie_year', 'movie_status', 'movie_added', 'rating_count', 'rating_average') as $attr)
+			{
+				$data[$attr] = $row->$attr;
+			}
+		}
+		else
+		{
+			die('Invalid Movie ID');;
+		}
+
+
+		$this->db->select('user_name, rating.*');
+		$this->db->from('user');
+		$this->db->join('rating', 'user.id = rating.user_id AND movie_id = ' . $this->db->escape($movie_id), 'LEFT');
+
+		$query = $this->db->get();
+
+		if ($query->num_rows() > 0)
+		{
+			foreach ($query->result() as $row)
+			{
+				$user_name = $row->user_name;
+				$data['users'][] = $user_name;
+				$data['users'][$user_name]['rating_value'] = $row->rating_value;
+				$data['users'][$user_name]['rating_added'] = $row->rating_added;
+			}
+		}
+		else
+		{
+			/* This "can't happen" at this point, but better safe than sorry? */
+			die('Invalid Movie ID');;
+		}
+
+	}
+
 }
 
 /* EOF controllers/movie.php */
