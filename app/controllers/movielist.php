@@ -202,7 +202,7 @@ class MovieList extends CI_Controller {
 		else
 			$ret .= 'off';
 
-		$ret .= '.png" title="' . $values[0] . '" alt="">&nbsp;';
+		$ret .= '.png" title="' . $values[0] . '" alt="" onClick="selectStar(this, 0)">&nbsp;';
 
 		for ($i = 1; $i <= 5; $i++) {
 			$ret .= '<img src="' . base_url() . 'images/star-';
@@ -210,10 +210,10 @@ class MovieList extends CI_Controller {
 			  $ret .= 'on';
 			else
 			  $ret .= 'off';
-			$ret .= '.png" title="' . $values[$i] . '" alt="">';
+			$ret .= '.png" title="' . $values[$i] . '" alt="" onClick="selectStar(this, ' . $i . ')">';
 		}
 
-		$ret .= '&nbsp;<img src="' . base_url() . 'images/remove.png" title="' . $values[-1] .'" alt="">';
+		$ret .= '&nbsp;<img src="' . base_url() . 'images/remove.png" title="' . $values[-1] .'" alt="" onClick="selectStar(this, -1)">';
 
 		return $ret;
 
