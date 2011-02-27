@@ -130,7 +130,12 @@ Thanks to Leon for the fix related to table changes.
               if (pageNumbers.size() > 0){
                    pageNumbers.empty();
                    for(var i = 1; i <= totalPages; i++) {
-                       pageNumbers.append("<a href='#' id='" + i + "'>" + i + "</a>");
+                       if (i == pageNum){
+                           pageNumbers.append("<a>" + i + "</a>");
+                       }   
+                       else{
+                           pageNumbers.append("<a href='#' id='" + i + "'>" + i + "</a>");
+                       }
                    }
        
                    pageNumbers.children('a').click(function(){
