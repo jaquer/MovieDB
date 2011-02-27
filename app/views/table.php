@@ -23,9 +23,16 @@ $(document).ready(function() {
 	$('#movies-table').paginateTable(oOptions);
 
 	$('#movies-wrapper').show();
+
+	var oPager = $('#pager');
+	var oPagerPosition = oPager.position();
+	oPager.css('position', 'fixed');
+	oPager.css('left', oPagerPosition.left);
+	oPager.css('top', oPagerPosition.top);
 });
 
 $(window).ready(function() {
 	$.loader('close');
+
 });
  </script>
