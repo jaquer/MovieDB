@@ -12,6 +12,11 @@ hr {
 	border-style: solid;
 }
 
+a, a.visited {
+	color: blue;
+	text-decoration: none;
+}
+
 #loginform {
 	margin: 0 auto;
 	width: 10em;
