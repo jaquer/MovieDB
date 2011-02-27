@@ -33,7 +33,7 @@ class MovieList extends CI_Controller {
 		$query = $this->db->get();
 
 		$this->load->library('table');
-		$this->table->set_template(array('table_open' => '<table id="movies-table">'));
+		$this->table->set_template(array('table_open' => '<table id="movies-table"><colgroup><col width="140"><col width="540"></colgroup>'));
 		$this->table->set_heading('Rating', 'Movie');
 
 		if ($query->num_rows() > 0)
@@ -77,7 +77,7 @@ class MovieList extends CI_Controller {
 		$query = $this->db->get();
 
 		$this->load->library('table');
-		$this->table->set_template(array('table_open' => '<table id="movies-table">'));
+		$this->table->set_template(array('table_open' => '<table id="movies-table"><colgroup><col width="140"><col width="540"></colgroup>'));
 		$this->table->set_heading('Average', 'Name');
 
 		if ($query->num_rows() > 0)
@@ -117,7 +117,7 @@ class MovieList extends CI_Controller {
 		$query = $this->db->get();
 
 		$this->load->library('table');
-		$this->table->set_template(array('table_open' => '<table id="movies-table">'));
+		$this->table->set_template(array('table_open' => '<table id="movies-table"><colgroup><col width="140"><col width="540"></colgroup>'));
 		$this->table->set_heading('Rating', 'Name');
 
 		if ($query->num_rows() > 0)
@@ -155,7 +155,7 @@ class MovieList extends CI_Controller {
 		$query = $this->db->get();
 
 		$this->load->library('table');
-		$this->table->set_template(array('table_open' => '<table id="movies-table">'));
+		$this->table->set_template(array('table_open' => '<table id="movies-table"><colgroup><col width="140"><col width="540"></colgroup>'));
 		$this->table->set_heading('Rating', 'Name');
 
 		if ($query->num_rows() > 0)

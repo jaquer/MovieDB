@@ -35,3 +35,7 @@ tbody tr:hover {
 table input {
   display: none;
 }
+
+#page-numbers a {
+	padding: 0 0.25em;
+}
