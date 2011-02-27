@@ -23,8 +23,9 @@ $(document).ready(function() {
 	$('#movies-table').paginateTable(oOptions);
 
 	$('#movies-wrapper').show();
+});
 
+$(window).ready(function() {
 	$.loader('close');
-
- });
+});
  </script>
