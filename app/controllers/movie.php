@@ -64,10 +64,12 @@ class Movie extends CI_Controller {
 		{
 			foreach ($query->result() as $row)
 			{
-				$user_name = $row->user_name;
-				$data['users'][] = $user_name;
-				$data['users'][$user_name]['rating_value'] = $row->rating_value;
-				$data['users'][$user_name]['rating_added'] = $row->rating_added;
+				$user = array();
+				$user['user_name']    = $row->user_name;
+				$user['rating_value'] = $row->rating_value;
+				$user['rating_added'] = $row->rating_added;
+
+				$data['users'][] = $user;
 			}
 		}
 		else
