@@ -33,6 +33,7 @@ class Movie extends CI_Controller {
 		$this->db->select('movie.*, (SELECT COUNT(*) FROM rating WHERE rating.movie_id = movie.id) AS rating_count, ROUND(AVG(rating_value), 1) AS rating_average', FALSE);
 		$this->db->from('movie');
 		$this->db->join('rating', 'movie.id = rating.movie_id', 'LEFT');
+		$this->db->where('rating_value >', 0);
 		$this->db->where('movie.id', $movie_id);
 
 		$query = $this->db->get();
