@@ -48,3 +48,22 @@ table input {
 #page-numbers span {
 	font-weight: bold;
 }
+
+dl.tabular {
+	width: 100%;
+	overflow: hidden;
+}
+
+dl.tabular dt {
+	float: left;
+	clear: left;
+	display: block;
+	width: 5em;
+	font-weight: bold;
+	text-align: right;
+}
+
+dl.tabular dd {
+	float: left;
+	margin-left: 0.5em;
+}

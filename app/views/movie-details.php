@@ -14,7 +14,7 @@
 	<?= heading($movie_name, 1); ?>
 	<hr>
 	<?= heading('Movie Details', 3); ?>
-	<dl>
+	<dl class="tabular">
 		<dt>Name</dt>
 			<dd><?= $movie_name; ?></dd>
 		<dt>Year</dt>
@@ -25,11 +25,11 @@
 			<dd><?= $movie_added; ?></dd>
 		<dt>Votes</dt>
 			<dd><?= $rating_count; ?></dd>
-		<dt>Average Rating</dt>
+		<dt>Average</dt>
 			<dd><?= $rating_average; ?></dd>
 	</dl>
 	<?= heading('User Votes', 3); ?>
-	<dl>
+	<dl class="tabular">
 <? foreach ($users as $user): ?>
 		<dt><?= $user['user_name']; ?></dt>
 			<dd><?= $user['rating_value']; ?><? if ($user['rating_added']) echo ' on ' . $user['rating_added']; ?></dd>
