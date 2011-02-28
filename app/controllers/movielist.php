@@ -40,7 +40,7 @@ class MovieList extends CI_Controller {
 		{
 			foreach ($query->result() as $row)
 			{
-				$this->table->add_row($this->_radioboxen($row->id, $row->rating_value), '<a href="http://www.imdb.com/title/' . $row->imdb_id . '" target="imdb">' . $row->movie_name . '</a>');
+				$this->table->add_row($this->_radioboxen($row->id, $row->rating_value), anchor('movie/details/' . $row->id, $row->movie_name, 'target="movie-details"'));
 			}
 		}
 		else
@@ -84,7 +84,7 @@ class MovieList extends CI_Controller {
 		{
 			foreach ($query->result() as $row)
 			{
-				$this->table->add_row($row->rating_average, '<a href="http://www.imdb.com/title/' . $row->imdb_id . '" target="imdb">' . $row->movie_name . '</a>');
+				$this->table->add_row($row->rating_average, anchor('movie/details/' . $row->id, $row->movie_name, 'target="movie-details"'));
 			}
 		}
 		else
@@ -124,7 +124,7 @@ class MovieList extends CI_Controller {
 		{
 			foreach ($query->result() as $row)
 			{
-				$this->table->add_row($this->_radioboxen($row->id, $row->rating_value), '<a href="http://www.imdb.com/title/' . $row->imdb_id . '" target="imdb">' . $row->movie_name . '</a>');
+				$this->table->add_row($this->_radioboxen($row->id, $row->rating_value), anchor('movie/details/' . $row->id, $row->movie_name, 'target="movie-details"'));
 			}
 		}
 		else
@@ -162,7 +162,7 @@ class MovieList extends CI_Controller {
 		{
 			foreach ($query->result() as $row)
 			{
-				$this->table->add_row($this->_radioboxen($row->id, $row->rating_value), '<a href="http://www.imdb.com/title/' . $row->imdb_id . '" target="imdb">' . $row->movie_name . '</a>');
+				$this->table->add_row($this->_radioboxen($row->id, $row->rating_value), anchor('movie/details/' . $row->id, $row->movie_name, 'target="movie-details"'));
 			}
 		}
 		else
