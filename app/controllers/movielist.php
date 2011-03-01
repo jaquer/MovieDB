@@ -10,7 +10,6 @@ class MovieList extends CI_Controller {
 			$this->session->set_userdata('redirect', current_url());
 			redirect('/user/');
 		}
-
 	}
 
 	function index()
@@ -21,7 +20,6 @@ class MovieList extends CI_Controller {
 
 	function unrated()
 	{
-
 		$user_id = $this->session->userdata('user_id');
 
 		$this->db->select('movie.*, rating_value');
@@ -33,7 +31,10 @@ class MovieList extends CI_Controller {
 		$query = $this->db->get();
 
 		$this->load->library('table');
-		$this->table->set_template(array('table_open' => '<table id="movies-table"><colgroup><col width="140"><col width="540"></colgroup>'));
+
+		$data['caption'] = 'Unrated Movies';
+
+		$this->table->set_template(array('table_open' => '<table class="movielist-table"><caption>' . $data['caption'] . '</caption><colgroup><col class="rating-column"><col class="movie-name-column"></colgroup>'));
 		$this->table->set_heading('Rating', 'Movie');
 
 		if ($query->num_rows() > 0)
@@ -50,17 +51,13 @@ class MovieList extends CI_Controller {
 
 		$data['table'] = $this->table->generate();
 
-		$data['caption'] = 'Unrated Movies';
-
 		$this->load->view('header');
-		$this->load->view('table', $data);
+		$this->load->view('movielist/container', $data);
 		$this->load->view('footer');
-
 	}
 
 	function delete()
 	{
-
 		$user_count = $this->db->count_all('user');
 
 		$this->db->select('movie.*, (SELECT COUNT(*) FROM rating WHERE rating.movie_id = movie.id) AS rating_count, ROUND(AVG(rating_value), 1) AS rating_average', FALSE);
@@ -77,8 +74,11 @@ class MovieList extends CI_Controller {
 		$query = $this->db->get();
 
 		$this->load->library('table');
-		$this->table->set_template(array('table_open' => '<table id="movies-table"><colgroup><col width="140"><col width="540"></colgroup>'));
-		$this->table->set_heading('Average', 'Name');
+
+		$data['caption'] = 'Movies to Delete';
+
+		$this->table->set_template(array('table_open' => '<table class="movielist-table"><caption>' . $data['caption'] . '</caption><colgroup><col class="average-column"><col class="movie-name-column"></colgroup>'));
+		$this->table->set_heading('Average', 'Movie');
 
 		if ($query->num_rows() > 0)
 		{
@@ -94,16 +94,13 @@ class MovieList extends CI_Controller {
 
 		$data['table'] = $this->table->generate();
 
-		$data['caption'] = 'Movies to Delete';
 		$this->load->view('header');
 		$this->load->view('table', $data);
 		$this->load->view('footer');
-
 	}
 
 	function orphaned()
 	{
-
 		$user_id = $this->session->userdata('user_id');
 		$user_count = $this->db->count_all('user');
 
@@ -117,8 +114,11 @@ class MovieList extends CI_Controller {
 		$query = $this->db->get();
 
 		$this->load->library('table');
-		$this->table->set_template(array('table_open' => '<table id="movies-table"><colgroup><col width="140"><col width="540"></colgroup>'));
-		$this->table->set_heading('Rating', 'Name');
+
+		$data['caption'] = 'Movies Missing Your Rating';
+
+		$this->table->set_template(array('table_open' => '<table class="movielist-table"><caption>' . $data['caption'] . '</caption><colgroup><col class="rating-column"><col class="movie-name-column"></colgroup>'));
+		$this->table->set_heading('Rating', 'Movie');
 
 		if ($query->num_rows() > 0)
 		{
@@ -134,17 +134,13 @@ class MovieList extends CI_Controller {
 
 		$data['table'] = $this->table->generate();
 
-		$data['caption'] = 'Movies Missing Your Rating';
-
 		$this->load->view('header');
-		$this->load->view('table', $data);
+		$this->load->view('movielist/container', $data);
 		$this->load->view('footer');
-
 	}
 
 	function all()
 	{
-
 		$user_id = $this->session->userdata('user_id');
 
 		$this->db->select('movie.*, rating_value');
@@ -155,8 +151,11 @@ class MovieList extends CI_Controller {
 		$query = $this->db->get();
 
 		$this->load->library('table');
-		$this->table->set_template(array('table_open' => '<table id="movies-table"><colgroup><col width="140"><col width="540"></colgroup>'));
-		$this->table->set_heading('Rating', 'Name');
+
+		$data['caption'] = 'All Movies';
+
+		$this->table->set_template(array('table_open' => '<table class="movielist-table"><caption>' . $data['caption'] . '</caption><colgroup><col class="rating-column"><col class="movie-name-column"></colgroup>'));
+		$this->table->set_heading('Rating', 'Movie');
 
 		if ($query->num_rows() > 0)
 		{
@@ -172,16 +171,13 @@ class MovieList extends CI_Controller {
 
 		$data['table'] = $this->table->generate();
 
-		$data['caption'] = 'All Movies';
 		$this->load->view('header');
-		$this->load->view('table', $data);
+		$this->load->view('movielist/container', $data);
 		$this->load->view('footer');
-
 	}
 
 	function _radioboxen($id, $rating)
 	{
-
 		if ($rating === NULL) $rating = -1;
 
 		$values = array(0 => 'Not Interested', 1 => 'Hated It', 2 => 'Didn\'t Like It', 3 => 'Liked It', 4 => 'Really Liked It', 5 => 'Loved It', -1 => 'Remove Rating');
@@ -216,9 +212,7 @@ class MovieList extends CI_Controller {
 		$ret .= '&nbsp;<img src="' . base_url() . 'images/remove.png" title="' . $values[-1] .'" alt="" onClick="selectStar(this, -1)">';
 
 		return $ret;
-
 	}
-
 }
 
-/* EOF controllers/movielist.php */
+/* EOF app/controllers/movielist.php */
