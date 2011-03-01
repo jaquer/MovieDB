@@ -9,6 +9,7 @@ $.loader({content: '<strong>Loading Movies</strong>', background: {opacity: 1}})
 	<span id="page-numbers"></span>
 	<a href="#" alt="Next Page" id="next-page">&raquo;</a>
 </div>
+<iframe name="movie-details" id="movie-details"></iframe>
 <script type="text/javascript">
 document.write('</div>');
 $(document).ready(function() {
