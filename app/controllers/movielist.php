@@ -180,36 +180,37 @@ class MovieList extends CI_Controller {
 	{
 		if ($rating === NULL) $rating = -1;
 
-		$values = array(0 => 'Not Interested', 1 => 'Hated It', 2 => 'Didn\'t Like It', 3 => 'Liked It', 4 => 'Really Liked It', 5 => 'Loved It', -1 => 'Remove Rating');
+		$titles = array(0 => "Not Interested", 1 => "Hated It", 2 => "Didn't Like It", 3 => "Liked It", 4 => "Really Liked It", 5 => "Loved It", -1 => "Remove Rating");
 
 		$ret = '';
 
-		foreach ($values as $value => $desc)
+		$name = 'movie_id-' . $id;
+
+		foreach ($titles as $value => $title)
 		{
-			$ret .= '<input type="radio" name="movie_id-' . $id . '" title="' . $desc . '" value="' . $value . '"';
-			if ($value == $rating)
-				$ret .= ' checked="checked"';
-			$ret .= '>';
+			$ret .= form_radio(array('name' => $name, 'value' => $value, 'title' => $title, 'id' => $name . '-' . $value, 'checked' => ($value == $rating)));
 		}
 
-		$ret .= '&nbsp;<img src="' . base_url() . 'images/not-interested-';
 		if ($rating == 0)
-			$ret .= 'on';
+			$src = 'images/not-interested-on.png';
 		else
-			$ret .= 'off';
+			$src = 'images/not-interested-off.png';
 
-		$ret .= '.png" title="' . $values[0] . '" alt="" onClick="selectStar(this, 0)">&nbsp;';
+		$ret .= form_label(img(array('src' => $src, 'title' => $titles[0])) . nbs(), $name . '-0');
 
 		for ($i = 1; $i <= 5; $i++) {
-			$ret .= '<img src="' . base_url() . 'images/star-';
+
 			if ($i <= $rating)
-			  $ret .= 'on';
+			  $src = 'images/star-on.png';
 			else
-			  $ret .= 'off';
-			$ret .= '.png" title="' . $values[$i] . '" alt="" onClick="selectStar(this, ' . $i . ')">';
+			  $src = 'images/star-off.png';
+
+			$ret .= form_label(img(array('src' => $src, 'title' => $titles[$i])), $name . '-' . $i);
 		}
 
-		$ret .= '&nbsp;<img src="' . base_url() . 'images/remove.png" title="' . $values[-1] .'" alt="" onClick="selectStar(this, -1)">';
+		$src = 'images/remove.png';
+
+		$ret .= form_label(nbs() . img(array('src' => $src, 'title' => $titles[-1])), $name . '--1');
 
 		return $ret;
 	}
