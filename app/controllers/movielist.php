@@ -95,7 +95,7 @@ class MovieList extends CI_Controller {
 		$data['table'] = $this->table->generate();
 
 		$this->load->view('header');
-		$this->load->view('table', $data);
+		$this->load->view('movielist/container', $data);
 		$this->load->view('footer');
 	}
 
