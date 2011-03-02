@@ -178,41 +178,51 @@ class MovieList extends CI_Controller {
 
 	function _radioboxen($id, $rating)
 	{
-		if ($rating === NULL) $rating = -1;
 
-		$titles = array(0 => "Not Interested", 1 => "Hated It", 2 => "Didn't Like It", 3 => "Liked It", 4 => "Really Liked It", 5 => "Loved It", -1 => "Remove Rating");
+		$values = array(0 => "Not Interested", 1 => "Hated It", 2 => "Didn't Like It", 3 => "Liked It", 4 => "Really Liked It", 5 => "Loved It", -1 => "Remove Rating");
+
+		if ($rating === NULL)
+		{
+			$rating = -1;
+		}
 
 		$ret = '';
 
 		$name = 'movie_id-' . $id;
 
-		foreach ($titles as $value => $title)
+		foreach ($values as $value => $title)
 		{
-			$ret .= form_radio(array('name' => $name, 'value' => $value, 'title' => $title, 'id' => $name . '-' . $value, 'checked' => ($value == $rating)));
-		}
-
-		if ($rating == 0)
-			$src = 'images/not-interested-on.png';
-		else
-			$src = 'images/not-interested-off.png';
-
-		$ret .= form_label(img(array('src' => $src, 'title' => $titles[0])) . nbs(), $name . '-0');
-
-		for ($i = 1; $i <= 5; $i++) {
-
-			if ($i <= $rating)
-			  $src = 'images/star-on.png';
+			$img = array();
+			if ($value === 0)
+			{
+				$img['src']   = 'images/not-interested-on.png';
+				$img['class'] = 'not-interested-button';
+			}
+			elseif ($value === -1)
+			{
+				$img['src']   = 'images/remove.png';
+				$img['class'] = 'remove-button';
+			}
 			else
-			  $src = 'images/star-off.png';
+			{
+				$img['src']   = 'images/star-on.png';
+			}
+			$img['title'] = $title;
 
-			$ret .= form_label(img(array('src' => $src, 'title' => $titles[$i])), $name . '-' . $i);
+			$radio = array();
+			$radio['name']    = $name;
+			$radio['value']   = $value;
+			$radio['title']   = $title;
+			$radio['checked'] = ($rating === $value);
+
+			$radio = form_radio($radio);
+			$img   = img($img);
+
+			$ret .= form_label($img . $radio);
 		}
-
-		$src = 'images/remove.png';
-
-		$ret .= form_label(nbs() . img(array('src' => $src, 'title' => $titles[-1])), $name . '--1');
 
 		return $ret;
+
 	}
 }
 
