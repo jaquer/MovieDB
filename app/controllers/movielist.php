@@ -2,6 +2,8 @@
 
 class MovieList extends CI_Controller {
 
+	public $_rating_titles;
+
 	function __construct()
 	{
 		parent::__construct();
@@ -10,6 +12,7 @@ class MovieList extends CI_Controller {
 			$this->session->set_userdata('redirect', current_url());
 			redirect('/user/');
 		}
+		$this->_rating_titles = unserialize(RATING_TITLES);
 	}
 
 	function index()
@@ -178,27 +181,24 @@ class MovieList extends CI_Controller {
 
 	function _radioboxen($id, $rating)
 	{
-
-		$values = array(0 => "Not Interested", 1 => "Hated It", 2 => "Didn't Like It", 3 => "Liked It", 4 => "Really Liked It", 5 => "Loved It", -1 => "Remove Rating");
-
 		if ($rating === NULL)
 		{
-			$rating = -1;
+			$rating = REMOVE_RATING;
 		}
 
 		$ret = '';
 
 		$name = 'movie_id-' . $id;
 
-		foreach ($values as $value => $title)
+		foreach ($this->_rating_titles as $value => $title)
 		{
 			$img = array();
-			if ($value === 0)
+			if ($value === NOT_INTERESTED)
 			{
 				$img['src']   = 'images/not-interested-on.png';
 				$img['class'] = 'not-interested-button';
 			}
-			elseif ($value === -1)
+			elseif ($value === REMOVE_RATING)
 			{
 				$img['src']   = 'images/remove.png';
 				$img['class'] = 'remove-button';
