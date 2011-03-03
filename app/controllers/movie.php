@@ -79,7 +79,7 @@ class Movie extends CI_Controller {
 			die('Invalid Movie ID');;
 		}
 
-		$this->load->view('movie-details', $data);
+		$this->load->view('movie/details', $data);
 
 	}
 
