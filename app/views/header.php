@@ -8,7 +8,4 @@
 	<title>MovieDB</title>
 </head>
 <body>
-	<div id="main">
-	<div id="header">
-		<?= heading('MovieDB', 1); ?>
-	</div>
+	<?= heading('MovieDB', 1); ?>
