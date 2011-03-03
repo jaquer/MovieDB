@@ -38,10 +38,10 @@ class Movie extends CI_Controller {
 
 		$query = $this->db->get();
 
-		if ($query->num_rows() > 0)
-		{
-			$row = $query->row();
+		$row = $query->row();
 
+		if ($row->id !== NULL)
+		{
 			$data['movie_id'] = $row->id;
 
 			foreach (array('imdb_id', 'movie_name', 'movie_year', 'movie_status', 'movie_added', 'rating_count', 'rating_average') as $attr)
