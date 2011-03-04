@@ -1,8 +1,8 @@
 <?=
 	form_open('user/login') .
-	form_fieldset('Select user', array('id' => 'loginform')) .
+	form_fieldset('Select User', array('id' => 'loginform')) .
 	form_dropdown('user_id', $users) .
-	form_submit('submit', 'Enter site') .
+	form_submit('submit', 'Enter Site') .
 	form_fieldset_close() .
 	form_close();
 ?>
