@@ -185,6 +185,10 @@ class MovieList extends CI_Controller {
 		{
 			$rating = REMOVE_RATING;
 		}
+		else
+		{
+			$rating = (int) $rating;
+		}
 
 		$ret = '';
 
@@ -213,7 +217,7 @@ class MovieList extends CI_Controller {
 			$radio['name']    = $name;
 			$radio['value']   = $value;
 			$radio['title']   = $title;
-			$radio['checked'] = ($rating === $value);
+			$radio['checked'] = ($rating == $value);
 
 			$radio = form_radio($radio);
 			$img   = img($img);
