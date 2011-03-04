@@ -5,3 +5,4 @@
 	<span id="page-numbers"></span>
 	<a href="#" title="Next Page" id="next-page-button">&raquo;</a>
 </p>
+<iframe name="movie-details" id="movie-details" seamless></iframe>
