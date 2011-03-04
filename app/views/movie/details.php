@@ -52,10 +52,7 @@
 <? endforeach; ?>
 	</dl>
 
-	<?= heading('IMdB Information ' . anchor('http://www.imdb.com/title/' . $imdb_id, img('images/imdb.png'), 'target="imdb" title="IMdB Full Site"'), 3); ?>
-	<iframe src="http://m.imdb.com/title/<?= $imdb_id; ?>" width="320" height="480">
-		<p><strong><?= anchor('http://www.imdb.com/title/' . $imdb_id, $movie_name); ?></strong> at The Internet Movie Database</p>
-	</iframe>
-
+	<?= heading('IMdB Information ' . img('images/imdb.png'), 3); ?>
+	<p><strong><?= anchor('http://www.imdb.com/title/' . $imdb_id, $movie_name, 'target="imdb"'); ?></strong> at The Internet Movie Database</p>
 </body>
 </html>
