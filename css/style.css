@@ -1,15 +1,13 @@
 body {
 	font-family: Verdana, Arial, sans-serif;
 	font-size: 9pt;
+	width: 82em;
 }
 
 h1 {
 	margin: 0;
-	padding: .25em 0 0 .25em;
-}
-
-hr {
-	border-style: solid;
+	padding: 0.25em;
+	border-bottom: 2px solid black;
 }
 
 a, a.visited {
@@ -18,26 +16,79 @@ a, a.visited {
 }
 
 #loginform {
-	margin: 0 auto;
-	width: 10em;
-	text-align: center;
+	margin: 2em auto;
+	padding: 1em 1.25em;
+	width: 15em;
+	border-radius: 5px;
 }
 
-table {
+#loginform select {
+	display: block;
+	width: 9em;
+	margin-bottom: 1em;
+}
+
+#loginform input[type=submit] {
+	display: block;
+	border-radius: 5px
+}
+
+.movielist {
+	width: 56em;
+	margin-top: 2em;
 	table-layout: fixed;
 	border-collapse: collapse;
+	border: 2px black solid;
+}
+
+.movielist caption {
+	font-size: 120%;
+	padding: 0.25em;
+	font-weight: bold;
+}
+
+.movielist th {
 	border: 1px black solid;
 }
 
-th {
-	border: 1px black solid;
-}
-
-tbody tr:hover {
+.movielist tbody tr:hover {
 	background-color: yellow;
 }
 
-table input {
+.movielist td:first-child {
+	text-align: center;
+}
+
+.movielist .rating-column {
+	width: 11em;
+}
+
+.movielist .movie-name-column {
+	width: 45em;
+}
+
+.movielist img {
+	/* Get re-displayed via JS. */
+	display: none;
+}
+
+.movielist input {
+	/* Get hidden via JS. */
+	margin: 0 0 0 2px;
+	padding: 0;
+}
+
+.movielist .not-interested-button {
+	margin-left: 0.25em;
+	margin-right: 0.25em;
+}
+
+.movielist .remove-button {
+	margin-left: 0.25em;
+}
+
+#pager {
+	/* Gets re-displayed via JS. */
 	display: none;
 }
 
@@ -47,6 +98,16 @@ table input {
 
 #page-numbers span {
 	font-weight: bold;
+}
+
+#movie-details {
+	position: fixed;
+	top: 8.25em;
+	left: 58em;
+	width: 24em;
+	height: 44em;
+	border: none;
+	overflow: hidden;
 }
 
 dl.tabular {

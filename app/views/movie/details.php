@@ -7,6 +7,23 @@
 
 	<title><?= $movie_name ?> - MovieDB</title>
 
+	<?= link_tag('css/style.css'); ?>
+	<style type="text/css">
+	/* Override main CSS */
+	body {
+		font-size: 8pt;
+		width: auto;
+		margin: 0;
+		padding: 0;
+	}
+
+	h1 {
+		font-size: 1.25em;
+		border: none;
+		text-align: center;
+	}
+	</style>
+
 </head>
 <body>
 	<?= heading($movie_name, 1); ?>

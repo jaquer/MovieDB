@@ -6,6 +6,9 @@
 	<?= link_tag('images/favicon.png', 'icon', 'image/png'); ?>
 
 	<title>MovieDB</title>
+
+	<?= link_tag('css/style.css'); ?>
+
 </head>
 <body>
 	<?= heading('MovieDB', 1); ?>
