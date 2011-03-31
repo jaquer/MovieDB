@@ -33,6 +33,8 @@ class Movie extends CI_Controller {
 		$this->_rating_titles = unserialize(RATING_TITLES);
 		$this->_rating_titles[REMOVE_RATING] = 'Not rated';
 
+		$this->load->helper('date');
+
 		$this->db->select('movie.*, (SELECT COUNT(*) FROM rating WHERE rating.movie_id = movie.id) AS rating_count, ROUND(AVG(rating_value), 1) AS rating_average', FALSE);
 		$this->db->from('movie');
 		$this->db->join('rating', 'movie.id = rating.movie_id', 'LEFT');
@@ -70,11 +72,25 @@ class Movie extends CI_Controller {
 
 				if ($row->rating_value === NULL)
 					$row->rating_value = -1;
+				if ($row->rating_added)
+				{
+					$rating_added = $row->rating_added;
+					$rating_added = mysql_to_unix($rating_added);
+					$rating_timespan = timespan($rating_added);
+					$rating_added = mdate('%F %j, %Y at %g:%i%a', $rating_added);
+				}
+				else
+				{
+					$rating_added = '';
+					$rating_timespan = '';
+				}
+
 				$user = array();
 				$user['user_name']    = $row->user_name;
 				$user['rating_value'] = $row->rating_value;
 				$user['rating_title'] = $this->_rating_titles[$row->rating_value];
-				$user['rating_added'] = $row->rating_added;
+				$user['rating_added'] = $rating_added;
+				$user['rating_timespan'] = $rating_timespan;
 
 				$data['users'][] = $user;
 			}
