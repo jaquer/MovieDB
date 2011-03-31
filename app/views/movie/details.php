@@ -22,11 +22,14 @@
 		border: none;
 		text-align: center;
 	}
+	h1 img{
+		vertical-align: bottom;
+	}
 	</style>
 
 </head>
 <body>
-	<?= heading($movie_name, 1); ?>
+	<?= heading($movie_name . ' ' . anchor('http://www.imdb.com/title/' . $imdb_id, img('images/imdb.png'), 'target="imdb"'), 1); ?>
 
 	<?= heading('Movie Details', 3); ?>
 	<dl class="tabular">
@@ -51,8 +54,5 @@
 			<dd><?= $user['rating_value']; ?><? if ($user['rating_added']) echo ' on ' . $user['rating_added']; ?></dd>
 <? endforeach; ?>
 	</dl>
-
-	<?= heading('IMdB Information ' . img('images/imdb.png'), 3); ?>
-	<p><strong><?= anchor('http://www.imdb.com/title/' . $imdb_id, $movie_name, 'target="imdb"'); ?></strong> at The Internet Movie Database</p>
 </body>
 </html>
