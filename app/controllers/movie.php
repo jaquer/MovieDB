@@ -22,9 +22,6 @@ class Movie extends CI_Controller {
 	function details()
 	{
 
-		$this->_rating_titles = unserialize(RATING_TITLES);
-		$this->_rating_titles[REMOVE_RATING] = 'Not rated';
-
 		$user_id = $this->session->userdata('user_id');
 		$movie_id = $this->uri->segment(3);
 
@@ -32,6 +29,9 @@ class Movie extends CI_Controller {
 		{
 			redirect('/movielist/');
 		}
+
+		$this->_rating_titles = unserialize(RATING_TITLES);
+		$this->_rating_titles[REMOVE_RATING] = 'Not rated';
 
 		$this->db->select('movie.*, (SELECT COUNT(*) FROM rating WHERE rating.movie_id = movie.id) AS rating_count, ROUND(AVG(rating_value), 1) AS rating_average', FALSE);
 		$this->db->from('movie');
@@ -56,7 +56,6 @@ class Movie extends CI_Controller {
 		{
 			die('Invalid Movie ID');;
 		}
-
 
 		$this->db->select('user_name, rating.*');
 		$this->db->from('user');
