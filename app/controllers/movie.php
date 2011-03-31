@@ -22,6 +22,9 @@ class Movie extends CI_Controller {
 	function details()
 	{
 
+		$this->_rating_titles = unserialize(RATING_TITLES);
+		$this->_rating_titles[REMOVE_RATING] = 'Not rated';
+
 		$user_id = $this->session->userdata('user_id');
 		$movie_id = $this->uri->segment(3);
 
@@ -65,9 +68,13 @@ class Movie extends CI_Controller {
 		{
 			foreach ($query->result() as $row)
 			{
+
+				if ($row->rating_value === NULL)
+					$row->rating_value = -1;
 				$user = array();
 				$user['user_name']    = $row->user_name;
 				$user['rating_value'] = $row->rating_value;
+				$user['rating_title'] = $this->_rating_titles[$row->rating_value];
 				$user['rating_added'] = $row->rating_added;
 
 				$data['users'][] = $user;

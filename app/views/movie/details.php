@@ -47,12 +47,11 @@
 			<dd><?= $rating_average; ?></dd>
 	</dl>
 
-	<?= heading('User Votes', 3); ?>
-	<dl class="tabular">
+	<?= heading('Votes', 3); ?>
+	<ul>
 <? foreach ($users as $user): ?>
-		<dt><?= $user['user_name']; ?></dt>
-			<dd><?= $user['rating_value']; ?><? if ($user['rating_added']) echo ' on ' . $user['rating_added']; ?></dd>
+		<li><?= $user['user_name'], br(), $user['rating_title']; ?><? if ($user['rating_added']) echo ' on ' . $user['rating_added']; ?></li>
 <? endforeach; ?>
-	</dl>
+	</ul>
 </body>
 </html>
