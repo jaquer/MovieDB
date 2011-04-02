@@ -72,7 +72,7 @@ class Movie extends CI_Controller {
 
 				$rating_value = $row->rating_value;
 				if ($rating_value === NULL)
-					$rating_value = -1;
+					$rating_value = REMOVE_RATING;
 				else
 					$rating_value = (int) $rating_value;
 
