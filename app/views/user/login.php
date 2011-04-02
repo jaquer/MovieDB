@@ -8,7 +8,7 @@
 ?>
 <!--  image preload -->
 <?
-	$images = array('not-interested-on', 'not-interested-off', 'star-on', 'star-off', 'star-hover','remove');
+	$images = array('not-interested', 'not-interested-off', 'star', 'star-off', 'star-hover','remove');
 	foreach ($images as $image):
 ?>
 <?=

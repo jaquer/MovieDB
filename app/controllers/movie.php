@@ -102,7 +102,7 @@ class Movie extends CI_Controller {
 				$rating_stars = '<span title="' . $this->_rating_titles[$rating_value] . '">';
 
 				if ($rating_value === NOT_INTERESTED)
-					$rating_stars .= img('images/not-interested-on.png');
+					$rating_stars .= img('images/not-interested.png');
 				else
 					$rating_stars .= img('images/not-interested-off.png');
 
@@ -112,7 +112,7 @@ class Movie extends CI_Controller {
 						continue;
 
 					if ($value <= $rating_value)
-						$rating_stars .= img('images/star-on.png');
+						$rating_stars .= img('images/star.png');
 					else
 						$rating_stars .= img('images/star-off.png');
 				}

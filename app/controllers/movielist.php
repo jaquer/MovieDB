@@ -199,7 +199,7 @@ class MovieList extends CI_Controller {
 			$img = array();
 			if ($value === NOT_INTERESTED)
 			{
-				$img['src']   = 'images/not-interested-on.png';
+				$img['src']   = 'images/not-interested.png';
 				$img['class'] = 'not-interested-button';
 			}
 			elseif ($value === REMOVE_RATING)
@@ -209,7 +209,7 @@ class MovieList extends CI_Controller {
 			}
 			else
 			{
-				$img['src']   = 'images/star-on.png';
+				$img['src']   = 'images/star.png';
 			}
 			$img['title'] = $title;
 
