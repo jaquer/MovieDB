@@ -182,13 +182,9 @@ class MovieList extends CI_Controller {
 	function _radioboxen($id, $rating)
 	{
 		if ($rating === NULL)
-		{
 			$rating = REMOVE_RATING;
-		}
 		else
-		{
 			$rating = (int) $rating;
-		}
 
 		$ret = '';
 
@@ -199,7 +195,11 @@ class MovieList extends CI_Controller {
 			$img = array();
 			if ($value === NOT_INTERESTED)
 			{
-				$img['src']   = 'images/not-interested.png';
+				if ($rating === $value)
+					$img['src'] = 'images/not-interested.png';
+				else
+					$img['src'] = 'images/not-interested-off.png';
+
 				$img['class'] = 'not-interested-button';
 			}
 			elseif ($value === REMOVE_RATING)
@@ -209,7 +209,10 @@ class MovieList extends CI_Controller {
 			}
 			else
 			{
-				$img['src']   = 'images/star.png';
+				if ($value <= $rating)
+					$img['src'] = 'images/star.png';
+				else
+					$img['src'] = 'images/star-off.png';
 			}
 			$img['title'] = $title;
 
