@@ -70,8 +70,12 @@ class Movie extends CI_Controller {
 			foreach ($query->result() as $row)
 			{
 
-				if ($row->rating_value === NULL)
-					$row->rating_value = -1;
+				$rating_value = $row->rating_value;
+				if ($rating_value === NULL)
+					$rating_value = -1;
+				else
+					$rating_value = (int) $rating_value;
+
 				if ($row->rating_added)
 				{
 					$rating_added = $row->rating_added;
@@ -95,10 +99,29 @@ class Movie extends CI_Controller {
 					$rating_timespan = '';
 				}
 
+				$rating_stars = '<span title="' . $this->_rating_titles[$rating_value] . '">';
+
+				if ($rating_value === NOT_INTERESTED)
+					$rating_stars .= img('images/not-interested-on.png');
+				else
+					$rating_stars .= img('images/not-interested-off.png');
+
+				foreach (array_keys($this->_rating_titles) as $value)
+				{
+					if ($value === REMOVE_RATING || $value === NOT_INTERESTED)
+						continue;
+
+					if ($value <= $rating_value)
+						$rating_stars .= img('images/star-on.png');
+					else
+						$rating_stars .= img('images/star-off.png');
+				}
+
+				$rating_stars .= '</span>';
+
 				$user = array();
 				$user['user_name']    = $row->user_name;
-				$user['rating_value'] = $row->rating_value;
-				$user['rating_title'] = $this->_rating_titles[$row->rating_value];
+				$user['rating_stars'] = $rating_stars;
 				$user['rating_added'] = $rating_added;
 				$user['rating_timespan'] = $rating_timespan;
 

@@ -22,7 +22,8 @@
 		border: none;
 		text-align: center;
 	}
-	h1 img{
+	h1 img,
+	span img {
 		vertical-align: bottom;
 	}
 	</style>
@@ -50,7 +51,7 @@
 	<?= heading('Votes', 3); ?>
 	<ul>
 <? foreach ($users as $user): ?>
-		<li><?= $user['user_name'], br(), $user['rating_title']; ?>
+		<li><?= $user['user_name'], br(), $user['rating_stars']; ?>
 		<? if ($user['rating_added']): ?>
 		<span title="<?= $user['rating_added']; ?>"><?= $user['rating_timespan']; ?> ago.</span>
 		<? endif; ?>
