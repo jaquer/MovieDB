@@ -50,7 +50,11 @@
 	<?= heading('Votes', 3); ?>
 	<ul>
 <? foreach ($users as $user): ?>
-		<li><?= $user['user_name'], br(), $user['rating_title']; ?><? if ($user['rating_added']) echo ' on ' . $user['rating_added'] . ' (~' . $user['rating_timespan'] . ' ago)'; ?></li>
+		<li><?= $user['user_name'], br(), $user['rating_title']; ?>
+		<? if ($user['rating_added']): ?>
+		<span title="<?= $user['rating_added']; ?>"><?= $user['rating_timespan']; ?> ago.</span>
+		<? endif; ?>
+		</li>
 <? endforeach; ?>
 	</ul>
 </body>
