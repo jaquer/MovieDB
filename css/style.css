@@ -103,11 +103,11 @@ a, a.visited {
 #movie-details {
 	position: fixed;
 	top: 8.25em;
-	left: 58em;
-	width: 24em;
+	left: 57.5em;
+	width: 25em;
 	height: 44em;
 	border: none;
-	overflow: hidden;
+	overflow: auto;
 }
 
 dl.tabular {

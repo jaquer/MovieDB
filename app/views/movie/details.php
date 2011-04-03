@@ -30,7 +30,7 @@
 
 </head>
 <body>
-	<?= heading($movie_name . ' ' . anchor('http://www.imdb.com/title/' . $imdb_id, img('images/imdb.png'), 'target="imdb"'), 1); ?>
+	<?= anchor('http://m.imdb.com/title/' . $imdb_id, heading($movie_name, 1)); ?>
 
 	<?= heading('Movie Details', 3); ?>
 	<dl class="tabular">
