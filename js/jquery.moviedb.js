@@ -1,3 +1,12 @@
+/* Show stars, hide radio buttons and attach event handlers to their change. */
+$(function() {
+	$('.movielist img').show();
+	$('.movielist input').hide();
+	$('.movielist input').change(function() {
+		updateStar($(this));
+	});
+});
+
 /* Paginate the table, and set the pager position to static. */
 $(function() {
 	var oOptions = {
@@ -32,6 +41,27 @@ $(function() {
 		}
 	});
 });
+
+/* Change star images on radio button value change. */
+function updateStar(oRadio) {
+
+	oParent = oRadio.parents('td');
+	oStars  = oParent.find('img');
+
+	iValue = oRadio.val();
+
+	if (iValue == 0)
+		$(oStars[0]).attr('src', '/moviedb/images/not-interested.png');
+	else
+		$(oStars[0]).attr('src', '/moviedb/images/not-interested-off.png');
+
+	for (iIndex = 1; iIndex <= 5; iIndex++)
+		if (iIndex <= iValue)
+			$(oStars[iIndex]).attr('src', '/moviedb/images/star.png');
+		else
+			$(oStars[iIndex]).attr('src', '/moviedb/images/star-off.png');
+
+}
 
 $(window).ready(function() {
 	$.loader('close');
