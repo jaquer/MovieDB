@@ -17,6 +17,10 @@
 
 	<script type="text/javascript" src="<?= base_url(); ?>js/jquery.paginatetable.js"></script>
 
+	<script type="text/javascript" src="<?= base_url(); ?>js/jquery.loader-min.js"></script>
+
+	<?= link_tag('css/jquery.loader.css'); ?>
+
 	<script type="text/javascript" src="<?= base_url(); ?>js/jquery.moviedb.js"></script>
 
 </head>

@@ -32,3 +32,7 @@ $(function() {
 		}
 	});
 });
+
+$(window).ready(function() {
+	$.loader('close');
+});

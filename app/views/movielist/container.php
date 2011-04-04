@@ -1,3 +1,6 @@
+<script type="text/javascript">
+	$.loader({content: '<strong>Loading Movies</strong>', background: {opacity: 1}});
+</script>
 <?= $table; ?>
 <p id="pager">
 	<span id="current-page" style="display: none;"></span>
