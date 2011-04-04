@@ -9,6 +9,16 @@
 
 	<?= link_tag('css/style.css'); ?>
 
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+
+	<script type="text/javascript">
+		$('<style type="text/css">.movielist { display: none; }</style>').appendTo('head');
+	</script>
+
+	<script type="text/javascript" src="<?= base_url(); ?>js/jquery.paginatetable.js"></script>
+
+	<script type="text/javascript" src="<?= base_url(); ?>js/jquery.moviedb.js"></script>
+
 </head>
 <body>
 	<?= heading('MovieDB', 1); ?>
