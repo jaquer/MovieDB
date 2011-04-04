@@ -21,3 +21,14 @@ $(function() {
 	oPager.css('left', oPagerPosition.left);
 	oPager.css('top', oPagerPosition.top);
 });
+
+/* Make entire table cell containing link clickable. */
+$(function() {
+	$(".movielist td").click(function(){
+		sURL = $(this).find("a").attr("href");
+		if (sURL) {
+			$('#movie-details').attr('src', sURL);
+			return false;
+		}
+	});
+});
