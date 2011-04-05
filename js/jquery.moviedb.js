@@ -50,15 +50,15 @@ function updateStar(oRadio) {
 	iValue = oRadio.val();
 
 	if (iValue == 0)
-		$(oStars[0]).attr('src', '/moviedb/images/not-interested.png');
+		$(oStars[0]).attr('src', BASE_URL + 'images/not-interested.png');
 	else
-		$(oStars[0]).attr('src', '/moviedb/images/not-interested-off.png');
+		$(oStars[0]).attr('src', BASE_URL + 'images/not-interested-off.png');
 
 	for (iIndex = 1; iIndex <= 5; iIndex++)
 		if (iIndex <= iValue)
-			$(oStars[iIndex]).attr('src', '/moviedb/images/star.png');
+			$(oStars[iIndex]).attr('src', BASE_URL + 'images/star.png');
 		else
-			$(oStars[iIndex]).attr('src', '/moviedb/images/star-off.png');
+			$(oStars[iIndex]).attr('src', BASE_URL + 'images/star-off.png');
 
 }
 
