@@ -1,14 +1,23 @@
-/* Show stars, hide radio buttons and attach event handlers to their change. */
 $(function() {
+
+	/* Show stars, hide radio buttons. */
 	$('.movielist img').show();
 	$('.movielist input').hide();
+	/* Attach event handlers to radio buttons change. */
 	$('.movielist input').change(function() {
 		updateStar($(this));
 	});
-});
 
-/* Paginate the table, and set the pager position to static. */
-$(function() {
+	/* Make entire table cell containing link clickable. */
+	$('.movielist td').click(function(){
+		sURL = $(this).find('a').attr('href');
+		if (sURL) {
+			$('#movie-details').attr('src', sURL);
+			return false;
+		}
+	});
+
+	/* Paginate the table and show it. */
 	var oOptions = {
 			rowsPerPage: 25,
 			pager: '#pager',
@@ -17,11 +26,11 @@ $(function() {
 			currentPage: '#current-page',
 			pageNumbers: '#page-numbers:'
 	}
-
 	$('.movielist').paginateTable(oOptions);
-
 	$('.movielist').show();
 
+	/* Fix the pager's position to the place where it first appears.
+	   This is to prevent it from "floating up" when the table shrinks. */
 	var oPager = $('#pager');
 	oPager.show();
 
@@ -29,17 +38,7 @@ $(function() {
 	oPager.css('position', 'fixed');
 	oPager.css('left', oPagerPosition.left);
 	oPager.css('top', oPagerPosition.top);
-});
 
-/* Make entire table cell containing link clickable. */
-$(function() {
-	$(".movielist td").click(function(){
-		sURL = $(this).find("a").attr("href");
-		if (sURL) {
-			$('#movie-details').attr('src', sURL);
-			return false;
-		}
-	});
 });
 
 /* Change star images on radio button value change. */
@@ -63,6 +62,7 @@ function updateStar(oRadio) {
 
 }
 
+/* Closing the loader on $(document).ready() would still show the table "folding up" when paginated. */
 $(window).ready(function() {
 	$.loader('close');
 });
