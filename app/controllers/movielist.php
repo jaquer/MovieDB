@@ -188,7 +188,7 @@ class MovieList extends CI_Controller {
 
 		$ret = '';
 
-		$name = 'movie_id-' . $id;
+		$name = 'rating[' . $id .']';
 
 		foreach ($this->_rating_titles as $value => $title)
 		{
@@ -229,6 +229,68 @@ class MovieList extends CI_Controller {
 		}
 
 		return $ret;
+
+	}
+
+	function save()
+	{
+
+		$user_id = (int) $this->input->post('user_id');
+
+		if (! $user_id)
+			show_error('User ID is not set.');
+
+		foreach ($this->input->post('rating') as $movie_id => $rating_value)
+		{
+
+			$rating_value = (int) $rating_value;
+
+			if ($rating_value === REMOVE_RATING)
+			{
+				$this->db->where('user_id', $user_id);
+				$this->db->where('movie_id', $movie_id);
+				$this->db->delete('rating');
+			}
+			else
+			{
+				/* This seems kind of ham-fisted, but neither
+				   INSERT INTO ... ON DUPLICATE KEY UPDATE nor
+				   REPLACE INTO really achieve what I'm after:
+				   to update the rating only if it differs from
+				   its current value. */
+
+				$this->db->where('user_id', $user_id);
+				$this->db->where('movie_id', $movie_id);
+				$query = $this->db->get('rating');
+
+				$this->db->set('user_id', $user_id);
+				$this->db->set('movie_id', $movie_id);
+				$this->db->set('rating_value', $rating_value);
+				$this->db->set('rating_modified', 'NOW()', FALSE);
+
+				/* Rating already exists... */
+				if ($query->num_rows() > 0)
+				{
+					$row = $query->row();
+					$current_rating_value = (int) $row->rating_value;
+
+					/* ...and has been changed. */
+					if ($current_rating_value !== $rating_value)
+					{
+						$this->db->where('id', $row->id);
+						$this->db->update('rating');
+					}
+
+				}
+				else
+				{
+					$this->db->set('rating_added', 'NOW()', FALSE);
+					$this->db->insert('rating');
+				}
+
+			}
+
+		}
 
 	}
 }
