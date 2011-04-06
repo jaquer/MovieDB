@@ -1,0 +1,1 @@
+<p>Ratings saved. You can close this window, or return to the <a href="<?= site_url(); ?>">homepage</a>.

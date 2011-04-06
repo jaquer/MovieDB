@@ -292,6 +292,10 @@ class MovieList extends CI_Controller {
 
 		}
 
+		$this->load->view('header');
+		$this->load->view('movielist/save');
+		$this->load->view('footer');
+
 	}
 }
 
