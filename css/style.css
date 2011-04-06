@@ -28,7 +28,7 @@ a, a.visited {
 	margin-bottom: 1em;
 }
 
-#loginform input[type=submit] {
+input[type=submit] {
 	display: block;
 	border-radius: 5px
 }
@@ -105,9 +105,18 @@ a, a.visited {
 	top: 8.25em;
 	left: 57.5em;
 	width: 25em;
-	height: 44em;
+	height: 43em;
 	border: none;
 	overflow: auto;
+}
+
+#save-button {
+	width: 8.75em;
+	position: fixed;
+	top: 46.75em;
+	left: 65.75em;
+	border-width: 4px;
+	border-color: red;
 }
 
 dl.tabular {
