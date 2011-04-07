@@ -52,8 +52,8 @@
 	<ul>
 <? foreach ($users as $user): ?>
 		<li><?= $user['user_name'], br(), $user['rating_stars']; ?>
-		<? if ($user['rating_added']): ?>
-		<span title="<?= $user['rating_added']; ?>"><?= $user['rating_timespan']; ?> ago.</span>
+		<? if ($user['rating_date']): ?>
+		<span title="<?= $user['rating_date']; ?>"><?= $user['rating_timespan']; ?> ago.</span>
 		<? endif; ?>
 		</li>
 <? endforeach; ?>

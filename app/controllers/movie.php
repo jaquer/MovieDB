@@ -76,12 +76,12 @@ class Movie extends CI_Controller {
 				else
 					$rating_value = (int) $rating_value;
 
-				if ($row->rating_added)
+				if ($row->rating_modified && $row->rating_modified !== '0000-00-00 00:00:00')
 				{
-					$rating_added = $row->rating_added;
-					$rating_added = mysql_to_unix($rating_added);
+					$rating_date = $row->rating_modified;
+					$rating_date = mysql_to_unix($rating_date);
 
-					$rating_timespan = timespan($rating_added);
+					$rating_timespan = timespan($rating_date);
 					if (strpos($rating_timespan, ',') !== FALSE)
 						$rating_timespan = strstr($rating_timespan, ',', TRUE);
 					/* The tilde is added as a token to be able to limit the str_replace to the beginning of the string. */
@@ -91,11 +91,11 @@ class Movie extends CI_Controller {
 					$rating_timespan = str_replace($numbers, $names, $rating_timespan);
 					$rating_timespan = str_replace('~', '', $rating_timespan);
 
-					$rating_added = mdate('%F %j, %Y at %g:%i%a', $rating_added);
+					$rating_date = mdate('%F %j, %Y at %g:%i%a', $rating_date);
 				}
 				else
 				{
-					$rating_added = '';
+					$rating_date = '';
 					$rating_timespan = '';
 				}
 
@@ -122,7 +122,7 @@ class Movie extends CI_Controller {
 				$user = array();
 				$user['user_name']    = $row->user_name;
 				$user['rating_stars'] = $rating_stars;
-				$user['rating_added'] = $rating_added;
+				$user['rating_date']  = $rating_date;
 				$user['rating_timespan'] = $rating_timespan;
 
 				$data['users'][] = $user;
