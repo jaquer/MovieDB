@@ -17,8 +17,9 @@ class MovieList extends CI_Controller {
 
 	function index()
 	{
-		/* TODO: redirection logic */
-		redirect('/movielist/unrated/');
+		$this->load->view('header');
+		$this->load->view('movielist/landing');
+		$this->load->view('footer');
 	}
 
 	function unrated()
