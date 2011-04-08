@@ -1,3 +1,4 @@
+<div id="movielist-container">
 <script type="text/javascript">
 	$.loader({content: '<strong>Loading Movies</strong>', background: {opacity: 1}});
 </script>
@@ -13,3 +14,4 @@
 <?= form_submit(array('name' => 'save', 'id' => 'save-button'), 'Save Selections'); ?>
 <?= form_close(); ?>
 <iframe name="movie-details" id="movie-details" seamless></iframe>
+</div><!-- #movielist-container -->

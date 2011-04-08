@@ -16,7 +16,7 @@
 	</script>
 
 	<script type="text/javascript">
-		$('<style type="text/css">.movielist { display: none; }</style>').appendTo('head');
+		$('<style type="text/css">#movielist-container { display: none; }</style>').appendTo('head');
 	</script>
 
 	<script type="text/javascript" src="<?= base_url(); ?>js/jquery.paginatetable.js"></script>
