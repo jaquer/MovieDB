@@ -1,15 +1,15 @@
 $(function() {
 
 	/* Show stars, hide radio buttons. */
-	$('.movielist img').show();
-	$('.movielist input').hide();
+	$('#movielist img').show();
+	$('#movielist input').hide();
 	/* Attach event handlers to radio buttons change. */
-	$('.movielist input').change(function() {
+	$('#movielist input').change(function() {
 		updateStar($(this));
 	});
 
 	/* Make entire table cell containing link clickable. */
-	$('.movielist td').click(function(){
+	$('#movielist td').click(function(){
 		sURL = $(this).find('a').attr('href');
 		if (sURL) {
 			$('#movie-details').attr('src', sURL);
@@ -26,7 +26,7 @@ $(function() {
 			currentPage: '#current-page',
 			pageNumbers: '#page-numbers:'
 	}
-	$('.movielist').paginateTable(oOptions);
+	$('#movielist').paginateTable(oOptions);
 	$('#movielist-container').show();
 
 	/* Fix the pager's position to the place where it first appears.

@@ -38,7 +38,7 @@ class MovieList extends CI_Controller {
 
 		$data['caption'] = 'Unrated Movies';
 
-		$this->table->set_template(array('table_open' => '<table class="movielist"><caption>' . $data['caption'] . '</caption><colgroup><col class="rating-column"><col class="movie-name-column"></colgroup>'));
+		$this->table->set_template(array('table_open' => '<table id="movielist"><caption>' . $data['caption'] . '</caption><colgroup><col id="rating-column"><col id="movie-name-column"></colgroup>'));
 		$this->table->set_heading('Rating', 'Movie');
 
 		if ($query->num_rows() > 0)
@@ -81,7 +81,7 @@ class MovieList extends CI_Controller {
 
 		$data['caption'] = 'Movies to Delete';
 
-		$this->table->set_template(array('table_open' => '<table class="movielist"><caption>' . $data['caption'] . '</caption><colgroup><col class="average-column"><col class="movie-name-column"></colgroup>'));
+		$this->table->set_template(array('table_open' => '<table id="movielist"><caption>' . $data['caption'] . '</caption><colgroup><col class="average-column"><col id="movie-name-column"></colgroup>'));
 		$this->table->set_heading('Average', 'Movie');
 
 		if ($query->num_rows() > 0)
@@ -121,7 +121,7 @@ class MovieList extends CI_Controller {
 
 		$data['caption'] = 'Movies Missing Your Rating';
 
-		$this->table->set_template(array('table_open' => '<table class="movielist"><caption>' . $data['caption'] . '</caption><colgroup><col class="rating-column"><col class="movie-name-column"></colgroup>'));
+		$this->table->set_template(array('table_open' => '<table id="movielist"><caption>' . $data['caption'] . '</caption><colgroup><col id="rating-column"><col id="movie-name-column"></colgroup>'));
 		$this->table->set_heading('Rating', 'Movie');
 
 		if ($query->num_rows() > 0)
@@ -158,7 +158,7 @@ class MovieList extends CI_Controller {
 
 		$data['caption'] = 'All Movies';
 
-		$this->table->set_template(array('table_open' => '<table class="movielist"><caption>' . $data['caption'] . '</caption><colgroup><col class="rating-column"><col class="movie-name-column"></colgroup>'));
+		$this->table->set_template(array('table_open' => '<table id="movielist"><caption>' . $data['caption'] . '</caption><colgroup><col id="rating-column"><col id="movie-name-column"></colgroup>'));
 		$this->table->set_heading('Rating', 'Movie');
 
 		if ($query->num_rows() > 0)

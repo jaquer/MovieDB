@@ -33,7 +33,7 @@ input[type=submit] {
 	border-radius: 5px
 }
 
-.movielist {
+#movielist {
 	width: 56em;
 	margin-top: 2em;
 	table-layout: fixed;
@@ -41,49 +41,49 @@ input[type=submit] {
 	border: 2px black solid;
 }
 
-.movielist caption {
+#movielist caption {
 	font-size: 120%;
 	padding: 0.25em;
 	font-weight: bold;
 }
 
-.movielist th {
+#movielist th {
 	border: 1px black solid;
 }
 
-.movielist tbody tr:hover {
+#movielist tbody tr:hover {
 	background-color: yellow;
 }
 
-.movielist td:first-child {
+#movielist td:first-child {
 	text-align: center;
 }
 
-.movielist .rating-column {
+#movielist #rating-column {
 	width: 11em;
 }
 
-.movielist .movie-name-column {
+#movielist #movie-name-column {
 	width: 45em;
 }
 
-.movielist img {
+#movielist img {
 	/* Get re-displayed via JS. */
 	display: none;
 }
 
-.movielist input {
+#movielist input {
 	/* Get hidden via JS. */
 	margin: 0 0 0 2px;
 	padding: 0;
 }
 
-.movielist .not-interested-button {
+#movielist .not-interested-button {
 	margin-left: 0.25em;
 	margin-right: 0.25em;
 }
 
-.movielist .remove-button {
+#movielist .remove-button {
 	margin-left: 0.25em;
 }
 
