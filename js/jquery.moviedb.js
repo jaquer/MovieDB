@@ -18,6 +18,8 @@ $(function() {
 	});
 
 	/* Paginate the table and show it. */
+	var oPager = $('#pager');
+	oPager.show();
 	var oOptions = {
 			rowsPerPage: 25,
 			pager: '#pager',
@@ -31,9 +33,6 @@ $(function() {
 
 	/* Fix the pager's position to the place where it first appears.
 	   This is to prevent it from "floating up" when the table shrinks. */
-	var oPager = $('#pager');
-	oPager.show();
-
 	var oPagerPosition = oPager.position();
 	oPager.css('position', 'fixed');
 	oPager.css('left', oPagerPosition.left);
