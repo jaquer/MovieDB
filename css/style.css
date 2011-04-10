@@ -6,7 +6,7 @@ body {
 
 h1 {
 	margin: 0;
-	padding: 0.25em;
+	padding: 0 0.25em;
 	border-bottom: 2px solid black;
 }
 
@@ -35,7 +35,7 @@ a, a.visited {
 
 #movielist {
 	width: 56em;
-	margin-top: 2em;
+	margin-top: 0.5em;
 	table-layout: fixed;
 	border-collapse: collapse;
 	border: 2px black solid;
@@ -90,6 +90,7 @@ a, a.visited {
 #pager {
 	/* Gets re-displayed via JS. */
 	display: none;
+	margin: 0.25em 0;
 }
 
 #page-numbers a, #page-numbers span {
@@ -102,22 +103,24 @@ a, a.visited {
 
 #movie-details {
 	position: fixed;
-	top: 8.25em;
+	top: 5.75em;
 	left: 57.5em;
 	width: 25em;
-	height: 43em;
+	height: 43.25em;
 	border: none;
 	overflow: auto;
 }
 
 #form-buttons {
 	position: fixed;
-	top: 50.75em;
+	top: 49.5em;
 	left: 57.5em;
-	width: 25em;
+	width: 25.25em;
+	margin: 0;
 }
 
 #exit-button {
+	width: 4em;
 	float: left;
 	border-width: 4px;
 	border-color: red;
@@ -125,6 +128,7 @@ a, a.visited {
 }
 
 #save-button {
+	width: 4em;
 	float: right;
 	border-width: 4px;
 	border-color: green;

@@ -13,7 +13,7 @@
 </p>
 <p id="form-buttons">
 <?= form_submit(array('name' => 'exit', 'id' => 'exit-button'), 'Exit'); ?>
-<?= form_submit(array('name' => 'save', 'id' => 'save-button'), 'Save Selections'); ?>
+<?= form_submit(array('name' => 'save', 'id' => 'save-button'), 'Save'); ?>
 </p>
 <?= form_close(); ?>
 <iframe name="movie-details" id="movie-details" seamless></iframe>
