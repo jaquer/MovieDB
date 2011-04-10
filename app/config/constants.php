@@ -37,24 +37,25 @@ define('FOPEN_WRITE_CREATE_STRICT',				'xb');
 define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
 /* MovieDB Rating Values */
-define('NOT_INTERESTED', 	0);
-define('HATED_IT',			1);
-define('DIDNT_LIKE_IT',		2);
-define('LIKED_IT',			3);
-define('REALLY_LIKED_IT',	4);
-define('LOVED_IT',			5);
-define('REMOVE_RATING',		-1);
+define('NOT_INTERESTED',  0);
+define('HATED_IT',        1);
+define('DIDNT_LIKE_IT',   2);
+define('LIKED_IT',        3);
+define('REALLY_LIKED_IT', 4);
+define('LOVED_IT',        5);
+define('REMOVE_RATING',  -1);
 
 /* MovieDB Rating Titles */
 define('RATING_TITLES', serialize(array(
-	NOT_INTERESTED =>	"Not Interested",
-	HATED_IT =>			"Hated It",
-	DIDNT_LIKE_IT =>	"Didn't Like It",
-	LIKED_IT =>			"Liked It",
-	REALLY_LIKED_IT =>	"Really Liked It",
-	LOVED_IT =>			"Loved It",
-	REMOVE_RATING =>	"Remove Rating"
+	NOT_INTERESTED =>  "Not Interested",
+	HATED_IT =>        "Hated It",
+	DIDNT_LIKE_IT =>   "Didn't Like It",
+	LIKED_IT =>        "Liked It",
+	REALLY_LIKED_IT => "Really Liked It",
+	LOVED_IT =>        "Loved It",
+	REMOVE_RATING =>   "Remove Rating"
 )));
+
 
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

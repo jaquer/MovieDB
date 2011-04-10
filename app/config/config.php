@@ -244,7 +244,7 @@ $config['encryption_key'] = 'o5g3cfG7m2v5bkXR';
 | 'sess_time_to_update'		= how many seconds between CI refreshing Session Information
 |
 */
-$config['sess_cookie_name']		= 'rdb_session';
+$config['sess_cookie_name']		= 'mdb_session';
 $config['sess_expiration']		= 7200;
 $config['sess_expire_on_close']	= FALSE;
 $config['sess_encrypt_cookie']	= FALSE;
@@ -262,11 +262,13 @@ $config['sess_time_to_update']	= 300;
 | 'cookie_prefix' = Set a prefix if you need to avoid collisions
 | 'cookie_domain' = Set to .your-domain.com for site-wide cookies
 | 'cookie_path'   =  Typically will be a forward slash
+| 'cookie_secure' =  Cookies will only be set if a secure HTTPS connection exists.
 |
 */
-$config['cookie_prefix']	= '';
-$config['cookie_domain']	= '';
-$config['cookie_path']		= '/';
+$config['cookie_prefix']	= "";
+$config['cookie_domain']	= "";
+$config['cookie_path']		= "/";
+$config['cookie_secure']	= FALSE;
 
 /*
 |--------------------------------------------------------------------------
