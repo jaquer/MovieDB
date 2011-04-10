@@ -9,6 +9,8 @@ class User extends CI_Controller {
 
 	function index()
 	{
+		$this->session->keep_flashdata('redirect');
+
 		$query = $this->db->get('user');
 		foreach ($query->result() as $row)
 		{
@@ -25,9 +27,9 @@ class User extends CI_Controller {
 
 		$this->session->set_userdata('user_id', $this->input->post('user_id'));
 
-		if ($this->session->userdata('redirect'))
+		if ($this->session->flashdata('redirect'))
 		{
-			redirect($this->session->userdata('redirect'));
+			redirect($this->session->flashdata('redirect'));
 		}
 		else
 		{
