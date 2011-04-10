@@ -28,9 +28,9 @@ a, a.visited {
 	margin-bottom: 1em;
 }
 
-input[type=submit] {
+#loginform input[type=submit] {
 	display: block;
-	border-radius: 5px
+	border-radius: 5px;
 }
 
 #movielist {
@@ -110,13 +110,25 @@ input[type=submit] {
 	overflow: auto;
 }
 
-#save-button {
-	width: 8.75em;
+#form-buttons {
 	position: fixed;
-	top: 46.75em;
-	left: 65.75em;
+	top: 50.75em;
+	left: 57.5em;
+	width: 25em;
+}
+
+#exit-button {
+	float: left;
 	border-width: 4px;
 	border-color: red;
+	border-radius: 5px;
+}
+
+#save-button {
+	float: right;
+	border-width: 4px;
+	border-color: green;
+	border-radius: 5px;
 }
 
 dl.tabular {

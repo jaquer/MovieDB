@@ -39,6 +39,12 @@ $(function() {
 	oPager.css('left', oPagerPosition.left);
 	oPager.css('top', oPagerPosition.top);
 
+	/* Confirm exit without save. */
+	$('#exit-button').click(function() {
+		if (confirm('Are you sure you want to exit without saving?') == false)
+			return false;
+	});
+
 });
 
 /* Change star images on radio button value change. */

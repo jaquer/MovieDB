@@ -235,6 +235,8 @@ class MovieList extends CI_Controller {
 
 	function save()
 	{
+		if ($this->input->post('exit'))
+			redirect('/');
 
 		$user_id = (int) $this->input->post('user_id');
 
