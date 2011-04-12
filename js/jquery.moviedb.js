@@ -18,8 +18,7 @@ $(function() {
 	});
 
 	/* Paginate the table and show it. */
-	var oPager = $('#pager');
-	oPager.show();
+	$('#pager').show();
 	var oOptions = {
 			rowsPerPage: 25,
 			pager: '#pager',
@@ -30,13 +29,6 @@ $(function() {
 	}
 	$('#movielist').paginateTable(oOptions);
 	$('#main-container').show();
-
-	/* Fix the pager's position to the place where it first appears.
-	   This is to prevent it from "floating up" when the table shrinks. */
-	var oPagerPosition = oPager.position();
-	oPager.css('position', 'fixed');
-	oPager.css('left', oPagerPosition.left);
-	oPager.css('top', oPagerPosition.top);
 
 	/* Confirm exit without save. */
 	$('#exit-button').click(function() {
