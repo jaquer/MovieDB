@@ -7,6 +7,8 @@
 
 	<title>MovieDB</title>
 
+	<?= link_tag('https://fonts.googleapis.com/css?family=Droid+Sans'); ?>
+
 	<?= link_tag('css/style.css'); ?>
 
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
@@ -16,7 +18,7 @@
 	</script>
 
 	<script type="text/javascript">
-		$('<style type="text/css">#movielist-container { display: none; }</style>').appendTo('head');
+		$('<style type="text/css">#main-container { display: none; }</style>').appendTo('head');
 	</script>
 
 	<script type="text/javascript" src="<?= base_url(); ?>js/jquery.paginatetable.js"></script>

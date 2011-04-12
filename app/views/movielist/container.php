@@ -1,10 +1,12 @@
-<div id="movielist-container">
+<div id="main-container">
 <script type="text/javascript">
 	$.loader({content: '<strong>Loading Movies</strong>', background: {opacity: 1}});
 </script>
+<div id="movielist-container">
 <?= form_open('movielist/save'); ?>
 <?= form_hidden('user_id', $this->session->userdata('user_id')); ?>
 <?= $table; ?>
+</div><!-- #movielist-container -->
 <p id="pager">
 	<span id="current-page" style="display: none;"></span>
 	<a href="#" title="Previous Page" id="previous-page-button">&laquo;</a>
@@ -17,4 +19,4 @@
 </p>
 <?= form_close(); ?>
 <iframe name="movie-details" id="movie-details" seamless></iframe>
-</div><!-- #movielist-container -->
+</div><!-- #main-container -->

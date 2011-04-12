@@ -1,13 +1,22 @@
+* {
+	font-family: 'Droid Sans', arial, serif;
+}
+
 body {
-	font-family: Verdana, Arial, sans-serif;
-	font-size: 9pt;
-	width: 82em;
+	font-size: 10.5pt;
+	width: 70.5em;
+	float: right;
 }
 
 h1 {
 	margin: 0;
 	padding: 0 0.25em;
+	font-size: 1.25em;
 	border-bottom: 2px solid black;
+}
+
+h2 {
+	font-size: 1em;
 }
 
 a, a.visited {
@@ -45,8 +54,12 @@ input[type=submit]:hover {
 	display: block;
 }
 
+#movielist-container {
+	width: 49em;
+	min-height: 42em;
+}
+
 #movielist {
-	width: 56em;
 	margin-top: 0.5em;
 	table-layout: fixed;
 	border-collapse: collapse;
@@ -54,13 +67,12 @@ input[type=submit]:hover {
 }
 
 #movielist caption {
-	font-size: 120%;
 	padding: 0.25em;
 	font-weight: bold;
 }
 
 #movielist th {
-	border: 1px black solid;
+	border-bottom: 1px black solid;
 }
 
 #movielist tbody tr:hover {
@@ -71,12 +83,16 @@ input[type=submit]:hover {
 	text-align: center;
 }
 
-#movielist #rating-column {
-	width: 11em;
+#movielist td:last-child {
+	padding-left: 0.25em;
 }
 
-#movielist #movie-name-column {
-	width: 45em;
+#rating-column {
+	width: 9em;
+}
+
+#movie-name-column {
+	width: 39em;
 }
 
 #movielist img {
@@ -102,7 +118,8 @@ input[type=submit]:hover {
 #pager {
 	/* Gets re-displayed via JS. */
 	display: none;
-	margin: 0.25em 0;
+	margin: 0;
+	font-size: 0.75em;
 }
 
 #page-numbers a, #page-numbers span {
@@ -115,19 +132,19 @@ input[type=submit]:hover {
 
 #movie-details {
 	position: fixed;
-	top: 5.75em;
-	left: 57.5em;
-	width: 25em;
-	height: 43.25em;
+	top: 4.25em;
+	right: 0.75em;
+	width: 21.75em;
+	height: 36.75em;
 	border: none;
 	overflow: auto;
 }
 
 #form-buttons {
 	position: fixed;
-	top: 49.5em;
-	left: 57.5em;
-	width: 25.25em;
+	top: 41.5em;
+	right: 0.75em;
+	width: 21.75em;
 	margin: 0;
 }
 

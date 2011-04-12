@@ -7,6 +7,8 @@
 
 	<title><?= $movie_name ?> - MovieDB</title>
 
+	<?= link_tag('https://fonts.googleapis.com/css?family=Droid+Sans'); ?>
+
 	<?= link_tag('css/style.css'); ?>
 	<style type="text/css">
 	/* Override main CSS */
@@ -15,8 +17,8 @@
 		width: auto;
 		margin: 0;
 		padding: 0;
+		float: none;
 	}
-
 	h1 {
 		font-size: 1.25em;
 		border: none;

@@ -29,7 +29,7 @@ $(function() {
 			pageNumbers: '#page-numbers:'
 	}
 	$('#movielist').paginateTable(oOptions);
-	$('#movielist-container').show();
+	$('#main-container').show();
 
 	/* Fix the pager's position to the place where it first appears.
 	   This is to prevent it from "floating up" when the table shrinks. */
