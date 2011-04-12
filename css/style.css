@@ -15,6 +15,19 @@ a, a.visited {
 	text-decoration: none;
 }
 
+input[type=submit] {
+	color: black;
+	background: white;
+	border: 2px solid black;
+	padding: 0.25em 1em;
+	border-radius: 5px;
+}
+
+input[type=submit]:hover {
+	color: white;
+	background: black;
+}
+
 #loginform {
 	margin: 2em auto;
 	padding: 1em 1.25em;
@@ -30,7 +43,6 @@ a, a.visited {
 
 #loginform input[type=submit] {
 	display: block;
-	border-radius: 5px;
 }
 
 #movielist {
@@ -119,20 +131,33 @@ a, a.visited {
 	margin: 0;
 }
 
+#exit-button, #save-button {
+	width: 5em;
+	padding-left: 1.5em;
+}
+
 #exit-button {
-	width: 4em;
 	float: left;
-	border-width: 4px;
-	border-color: red;
-	border-radius: 5px;
+	color: red;
+	background: url(../images/cross.png) no-repeat left;
+}
+
+#exit-button:hover {
+	color: white;
+	background: url(../images/cross-hover.png) no-repeat left;
+	background-color: red;
 }
 
 #save-button {
-	width: 4em;
 	float: right;
-	border-width: 4px;
-	border-color: green;
-	border-radius: 5px;
+	color: green;
+	background: url(../images/tick.png) no-repeat left;
+}
+
+#save-button:hover {
+	color: white;
+	background: url(../images/tick-hover.png) no-repeat left;
+	background-color: green;
 }
 
 dl.tabular {
