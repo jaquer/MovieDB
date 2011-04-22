@@ -92,12 +92,12 @@ class DataBase extends CI_Controller {
 						$avi = $file;
 			}
 
-			if (! $nfo)
+			if ($nfo === FALSE)
 			{
 				$errors['current'] = "No NFO file found for '" . $directory . "'";
 				continue;
 			}
-			if (! $avi)
+			if ($avi === FALSE)
 			{
 				$errors['current'] = "No AVI file found for '" . $directory . "'";
 				continue;
