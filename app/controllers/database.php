@@ -82,13 +82,14 @@ class DataBase extends CI_Controller {
 			{
 				$path = $base . '/' . $directory . '/' . $file;
 
-				$info = pathinfo($file);
 
-				if (array_key_exists('extension', $info))
-					if ($info['extension'] === 'nfo')
-						$nfo = TRUE;
-					elseif ($info['extension'] === 'avi')
-						$avi = TRUE;
+				$ext = strrchr($file, '.');
+
+				if ($ext !== FALSE)
+					if ($ext === '.nfo')
+						$nfo = $file;
+					elseif ($ext === '.avi')
+						$avi = $file;
 			}
 
 			if (! $nfo)
