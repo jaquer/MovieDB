@@ -144,10 +144,10 @@ class DataBase extends CI_Controller {
 				/* We resort to exec'ing stat because php's filesize() has issues with large files. */
 				$dirsize += exec('stat --format=%s ' . escapeshellarg($path));
 
-				$info = pathinfo($filename);
+				$ext = strrchr($filename, '.');
 
-				if (array_key_exists('extension', $info))
-					if ($info['extension'] === 'nfo')
+				if ($ext !== FALSE)
+					if ($ext === '.nfo')
 						$xml = simplexml_load_file($path, 'SimpleXMLElement', LIBXML_COMPACT);
 			}
 
