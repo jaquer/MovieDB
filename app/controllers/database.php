@@ -132,6 +132,7 @@ class DataBase extends CI_Controller {
 
 			$dirsize = 0;
 			$xml = FALSE;
+			$tbn = '';
 
 			foreach ($map as $filename)
 			{
@@ -149,6 +150,8 @@ class DataBase extends CI_Controller {
 				if ($ext !== FALSE)
 					if ($ext === '.nfo')
 						$xml = simplexml_load_file($path, 'SimpleXMLElement', LIBXML_COMPACT);
+					if ($ext === '.tbn')
+						$tbn = $filename;
 			}
 
 			if (! $xml)
@@ -162,6 +165,7 @@ class DataBase extends CI_Controller {
 			$movie['year']      = (string) $xml->year;
 			$movie['dirname']   = $directory;
 			$movie['size']      = $dirsize;
+			$movie['cover']     = $tbn;
 
 			$data[$directory] = $movie;
 
