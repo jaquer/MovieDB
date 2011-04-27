@@ -16,7 +16,7 @@ class Movie extends CI_Controller {
 	function index()
 	{
 		/* Nothing to see here... */
-		redirect('/movielist/');
+		redirect('/');
 	}
 
 	function details()
@@ -27,7 +27,7 @@ class Movie extends CI_Controller {
 
 		if (! $movie_id)
 		{
-			redirect('/movielist/');
+			redirect('/');
 		}
 
 		$this->_rating_titles = unserialize(RATING_TITLES);
