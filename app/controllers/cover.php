@@ -31,8 +31,6 @@ class Cover extends CI_Controller {
 
 		if ($query->num_rows() > 0)
 		{
-			$this->load->helper('file');
-
 			$row = $query->row();
 
 			$dirname = $row->movie_dirname;
@@ -51,36 +49,55 @@ class Cover extends CI_Controller {
 
 				$path = $base . '/' . $dirname . $row->cover_filename;
 
-				$data = read_file($path);
-
-				if (! $data)
+				if (! $this->stream(urlencode($path)))
 				{
 					$this->db->select('cover_image');
 					$this->db->from('cover');
 					$this->db->where('movie_id', $movie_id);
 
 					$data = $this->db->get()->row()->cover_image;
-				}
 
+					$this->_display_binary($data);
+					return;
+				}
 			}
 			else
 			{
 				$default_cover = $this->config->item('default_cover', 'moviedb');
-				$data = read_file($default_cover);
 
-				if (! $data)
-					show_error('Unable to load cover image');
+				$path = realpath($default_cover);
+
+				if ($path === FALSE)
+					show_error('Unable to find default cover image');
+				elseif ($this->stream(urlencode($path)) === FALSE)
+					show_error('Unable to read default cover image');
 			}
-
-			$this->output->set_content_type('png');
-			$this->output->append_output($data);
-
 		}
 		else
 		{
 			show_error('Invalid Movie ID');
 		}
 	}
+
+	function stream($encoded_path)
+	{
+		$this->load->helper('file');
+
+		$data = read_file(urldecode($encoded_path));
+
+		if (! $data)
+			return false;
+		else
+			$this->_display_binary($data);
+	}
+
+	function _display_binary($data)
+	{
+		$this->output->set_content_type('png');
+		$this->output->append_output($data);
+	}
+
+
 }
 
 /* EOF app/controllers/cover.php */
