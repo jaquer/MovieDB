@@ -81,15 +81,7 @@ class Movie extends CI_Controller {
 					$rating_date = $row->rating_modified;
 					$rating_date = mysql_to_unix($rating_date);
 
-					$rating_timespan = timespan($rating_date);
-					if (strpos($rating_timespan, ',') !== FALSE)
-						$rating_timespan = strstr($rating_timespan, ',', TRUE);
-					/* The tilde is added as a token to be able to limit the str_replace to the beginning of the string. */
-					$rating_timespan = '~' . strtolower($rating_timespan);
-					$numbers = array('~1 ', '~2 ', '~3 ', '~4 ', '~5 ', '~6 ', '~7 ', '~8 ', '~9 ');
-					$names = array('One ', 'Two ', 'Three ', 'Four ', 'Five ', 'Six ', 'Seven ', 'Eight ', 'Nine ');
-					$rating_timespan = str_replace($numbers, $names, $rating_timespan);
-					$rating_timespan = str_replace('~', '', $rating_timespan);
+					$rating_timespan = pretty_timespan($rating_date);
 
 					$rating_date = mdate('%F %j, %Y at %g:%i%a', $rating_date);
 				}
