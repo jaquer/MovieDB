@@ -195,3 +195,10 @@ dl.tabular dd {
 	float: left;
 	margin-left: 0.5em;
 }
+
+#movie-cover {
+	display: block;
+	max-width: 256px;
+	max-height: 256px;
+	margin: 0 auto;
+}

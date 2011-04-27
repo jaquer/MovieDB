@@ -34,6 +34,8 @@
 <body>
 	<?= anchor('http://m.imdb.com/title/' . $imdb_id, heading($movie_name, 1)); ?>
 
+	<?= img(array('src' => 'cover/show/' . $movie_id, 'id' => 'movie-cover'), TRUE); ?>
+
 	<?= heading('Movie Details', 3); ?>
 	<dl class="tabular">
 		<dt>Name</dt>
