@@ -18,7 +18,7 @@ class Cover extends CI_Controller {
 	{
 		$movie_id = $this->uri->segment(3);
 
-		if (! $movie_id)
+		if ($movie_id === FALSE)
 			redirect('/');
 
 		$this->config->load('moviedb', TRUE);
@@ -29,53 +29,45 @@ class Cover extends CI_Controller {
 
 		$query = $this->db->get();
 
-		if ($query->num_rows() > 0)
+		if ($query->num_rows() === 0)
+			show_error('Invalid Movie ID');
+
+		$dirname = $query->row()->movie_dirname;
+
+		$this->db->select('cover_filename');
+		$this->db->from('cover');
+		$this->db->where('movie_id', $movie_id);
+
+		$query = $this->db->get();
+
+		if ($row = $query->row())
 		{
-			$row = $query->row();
+			$base = $this->config->item('base_dir', 'moviedb');
 
-			$dirname = $row->movie_dirname;
+			$path = $base . '/' . $dirname . $row->cover_filename;
 
-			$this->db->select('cover_filename');
-			$this->db->from('cover');
-			$this->db->where('movie_id', $movie_id);
-
-			$query = $this->db->get();
-
-			if ($query->num_rows() > 0)
+			if ($this->stream(urlencode($path)) === FALSE)
 			{
-				$row = $query->row();
+				$this->db->select('cover_image');
+				$this->db->from('cover');
+				$this->db->where('movie_id', $movie_id);
 
-				$base = $this->config->item('base_dir', 'moviedb');
+				$data = $this->db->get()->row()->cover_image;
 
-				$path = $base . '/' . $dirname . $row->cover_filename;
-
-				if (! $this->stream(urlencode($path)))
-				{
-					$this->db->select('cover_image');
-					$this->db->from('cover');
-					$this->db->where('movie_id', $movie_id);
-
-					$data = $this->db->get()->row()->cover_image;
-
-					$this->_display_binary($data);
-					return;
-				}
-			}
-			else
-			{
-				$default_cover = $this->config->item('default_cover', 'moviedb');
-
-				$path = realpath($default_cover);
-
-				if ($path === FALSE)
-					show_error('Unable to find default cover image');
-				elseif ($this->stream(urlencode($path)) === FALSE)
-					show_error('Unable to read default cover image');
+				$this->_display_binary($data);
+				return;
 			}
 		}
 		else
 		{
-			show_error('Invalid Movie ID');
+			$default_cover = $this->config->item('default_cover', 'moviedb');
+
+			$path = realpath($default_cover);
+
+			if ($path === FALSE)
+				show_error('Unable to find default cover image');
+			elseif ($this->stream(urlencode($path)) === FALSE)
+				show_error('Unable to read default cover image');
 		}
 	}
 
@@ -85,7 +77,7 @@ class Cover extends CI_Controller {
 
 		$data = read_file(urldecode($encoded_path));
 
-		if (! $data)
+		if (empty($data))
 			return false;
 		else
 			$this->_display_binary($data);
