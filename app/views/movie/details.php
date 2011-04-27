@@ -32,27 +32,19 @@
 
 </head>
 <body>
-	<?= anchor('http://m.imdb.com/title/' . $imdb_id, heading($movie_name, 1)); ?>
+	<?= anchor('http://m.imdb.com/title/' . $imdb_id, heading($movie_name . ' (' . $movie_year . ')', 1)); ?>
 
 	<?= img(array('src' => 'cover/show/' . $movie_id, 'id' => 'movie-cover'), TRUE); ?>
 
-	<?= heading('Movie Details', 3); ?>
 	<dl class="tabular">
-		<dt>Name</dt>
-			<dd><?= $movie_name; ?></dd>
-		<dt>Year</dt>
-			<dd><?= $movie_year; ?></dd>
-		<dt>Status</dt>
-			<dd><?= $movie_status; ?></dd>
 		<dt>Added</dt>
 			<dd><span title="<?= $movie_added; ?>"><?= $movie_timespan; ?> ago.</span></dd>
-		<dt>Votes</dt>
-			<dd><?= $rating_count; ?></dd>
+		<dt>Status</dt>
+			<dd><?= $movie_status; ?></dd>
 		<dt>Average</dt>
 			<dd><?= $rating_average; ?></dd>
 	</dl>
 
-	<?= heading('Votes', 3); ?>
 	<ul>
 <? foreach ($users as $user): ?>
 		<li><?= $user['user_name'], br(), $user['rating_stars']; ?>
