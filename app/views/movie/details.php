@@ -45,7 +45,7 @@
 		<dt>Status</dt>
 			<dd><?= $movie_status; ?></dd>
 		<dt>Added</dt>
-			<dd><?= $movie_added; ?></dd>
+			<dd><span title="<?= $movie_added; ?>"><?= $movie_timespan; ?> ago.</span></dd>
 		<dt>Votes</dt>
 			<dd><?= $rating_count; ?></dd>
 		<dt>Average</dt>

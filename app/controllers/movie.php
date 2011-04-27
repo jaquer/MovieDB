@@ -49,10 +49,13 @@ class Movie extends CI_Controller {
 		{
 			$data['movie_id'] = $row->id;
 
-			foreach (array('imdb_id', 'movie_name', 'movie_year', 'movie_status', 'movie_added', 'rating_count', 'rating_average') as $attr)
-			{
+			foreach (array('imdb_id', 'movie_name', 'movie_year', 'movie_status', 'rating_count', 'rating_average') as $attr)
 				$data[$attr] = $row->$attr;
-			}
+
+			$movie_added = mysql_to_unix($row->movie_added);
+
+			$data['movie_timespan'] = pretty_timespan($movie_added);
+			$data['movie_added'] = mdate('%F %j, %Y at %g:%i%a', $movie_added);
 		}
 		else
 		{
