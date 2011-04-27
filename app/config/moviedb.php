@@ -3,4 +3,6 @@
 /* The base directory containing the movies. */
 $config['base_dir']	= '/mnt/video/Movies';
 
+$config['default_cover'] = './images/default-cover.png';
+
 /* EOF app/config/moviedb.php */
